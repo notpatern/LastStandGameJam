@@ -1,9 +1,13 @@
 using Godot;
+using Script.RecipeScripts;
 
-[GlobalClass]
-public partial class CustomerData : Resource
+namespace Scripts.CustomerScripts
 {
-    public Recipe recipe;
-    public float patience;
-    public float money;
-}
+    [GlobalClass]
+    public partial class CustomerData : Resource
+    {
+        public Recipe recipe;
+        public float patience;
+        public float money;
+    }
+}s

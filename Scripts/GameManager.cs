@@ -1,18 +1,27 @@
 using Godot;
+using Scripts.CustomerScripts;
+using Scripts.RecipeScripts;
+using Scripts.ZombScripts;
 
-
-public partial class GameManager : Node2D
+namespace Scripts
 {
-	[Export] CustomerManager _customerManager;
+    public partial class GameManager : Node2D
+    {
+        [Export] CustomerManager _customerManager;
+        [Export] RecipeManager _recipeManager;
+        [Export] ZombsManager _zombsManager;
 
-	public override void _Ready()
-	{
-		_customerManager.Start();
-	}
+        public override void _Ready()
+        {
+            _customerManager.Start();
+            _recipeManager.Start();
+            _zombsManager.Start();
+        }
 
-	
-	public override void _Process(double delta)
-	{
-		_customerManager.Update();
-	}
+        public override void _Process(double delta)
+        {
+            _customerManager.Update();
+            _zombsManager.Update();
+        }
+    }
 }

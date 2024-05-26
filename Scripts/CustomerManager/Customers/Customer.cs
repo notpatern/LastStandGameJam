@@ -1,14 +1,15 @@
 using Godot;
-
-
-[GlobalClass]
-public partial class Customer : Resource
+namespace Scripts.CustomerScripts
 {
-	[Export] CustomerData customerData;
-	[Export] PackedScene gfx;
+    [GlobalClass]
+    public partial class Customer : Resource
+    {
+        [Export] CustomerData customerData;
+        [Export] PackedScene gfx;
 
-	public void Start()
-	{
+        public void Start()
+        {
 
-	}
+        }
+    }
 }

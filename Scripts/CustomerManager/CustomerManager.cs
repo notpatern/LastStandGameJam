@@ -1,18 +1,20 @@
 using Godot;
 
-
-[GlobalClass]
-public partial class CustomerManager : Resource
+namespace Scripts.CustomerScripts
 {
-    [Export] Customer[] customers;
-
-    public void Start()
+    [GlobalClass]
+    public partial class CustomerManager : Resource
     {
+        [Export] Customer[] customers;
 
-    }
+        public void Start()
+        {
 
-    public void Update()
-    {
+        }
 
+        public void Update()
+        {
+
+        }
     }
 }
