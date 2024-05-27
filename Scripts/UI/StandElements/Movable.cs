@@ -2,19 +2,18 @@ using Godot;
 
 namespace Scripts.UI.StandElements {
     public /*abstract*/ partial class Movable : Node2D {
+        [Export] private MovableBody body;
+        [Export] private Node2D gfxContainer;
 
-        [Export] private NodePath bodyPath;
-        private MovableBody body;
-
+        [Export] private float maxGFXOffset = -15;
+        [Export] private float GFXOffsetSpeed = -500;
         private Vector2 mouseOffset;
 
         public delegate void State(double delta);
         public State state;
         
         public override void _Ready() {
-            body = GetNode<MovableBody>(bodyPath);
             body.movableParent = this;
-
             state = DroppedState;
         }
 
@@ -24,11 +23,11 @@ namespace Scripts.UI.StandElements {
 
         public virtual void PickedUpState(double delta) {
             Position = mouseOffset + GetGlobalMousePosition();
-
+            MoveUp(delta);
         }
 
         public virtual void DroppedState(double delta) {
-
+            MoveDown(delta);
         }
 
         public virtual void SetPickedUp() {
@@ -38,6 +37,19 @@ namespace Scripts.UI.StandElements {
 
         public virtual void SetDropped() {
             state = DroppedState;
+        }
+
+        public void MoveUp(double delta) {
+            //this is juiceable
+            if (gfxContainer.Position.Y > maxGFXOffset) {
+                gfxContainer.Position += new Vector2(0, GFXOffsetSpeed) * (float)delta;
+            }
+        }
+        public void MoveDown(double delta) {
+            //this is juiceable
+            if (gfxContainer.Position.Y < 0) {
+                gfxContainer.Position -= new Vector2(0, GFXOffsetSpeed) * (float)delta;
+            }
         }
     }
 }
