@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqt3b6dvtf2ci"]
+
+[ext_resource type="Script" path="res://Scripts/ZombsManager/Zomb/Zomb.cs" id="1_dmaon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_20e0w"]
+
+[node name="Zomb" type="Node2D" node_paths=PackedStringArray("collisionCircle")]
+script = ExtResource("1_dmaon")
+collisionCircle = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_20e0w")
+disabled = true
