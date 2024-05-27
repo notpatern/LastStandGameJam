@@ -1,0 +1,35 @@
+[gd_scene load_steps=12 format=3 uid="uid://flkdl31858t1"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_mywjn"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerData.cs" id="2_bnky3"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/Customer.cs" id="2_c2luc"]
+[ext_resource type="PackedScene" uid="uid://bcjf5t287gs20" path="res://Scenes/TestCustomer.tscn" id="2_iofg5"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="3_6xt1v"]
+
+[sub_resource type="Resource" id="Resource_a6mkc"]
+script = ExtResource("2_bnky3")
+
+[sub_resource type="Resource" id="Resource_2ap0j"]
+script = ExtResource("2_c2luc")
+customerData = SubResource("Resource_a6mkc")
+gfx = ExtResource("2_iofg5")
+
+[sub_resource type="Resource" id="Resource_8pfig"]
+script = ExtResource("2_c2luc")
+gfx = ExtResource("2_iofg5")
+
+[sub_resource type="Resource" id="Resource_51qsj"]
+script = ExtResource("2_c2luc")
+gfx = ExtResource("2_iofg5")
+
+[sub_resource type="Resource" id="Resource_5bx0k"]
+script = ExtResource("2_c2luc")
+gfx = ExtResource("2_iofg5")
+
+[sub_resource type="Resource" id="Resource_507wp"]
+script = ExtResource("3_6xt1v")
+customerScriptableObjects = Array[Object]([SubResource("Resource_2ap0j"), SubResource("Resource_8pfig"), SubResource("Resource_51qsj"), SubResource("Resource_5bx0k")])
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mywjn")
+_customerManager = SubResource("Resource_507wp")

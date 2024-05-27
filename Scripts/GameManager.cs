@@ -7,7 +7,7 @@ namespace Scripts
 {
     public partial class GameManager : Node2D
     {
-        [Export] CustomerManager _customerManager;
+        [Export] CustomersManager _customerManager;
         [Export] RecipeManager _recipeManager;
         [Export] ZombsManager _zombsManager;
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcjf5t287gs20"]
+
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerGFX.cs" id="1_jwqw1"]
+
+[node name="TestCustomer" type="Node2D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_jwqw1")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
