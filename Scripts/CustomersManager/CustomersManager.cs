@@ -21,9 +21,18 @@ namespace Scripts.CustomerScripts
             // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeConmpleted)));
         }
 
-        public void Update()
-        {
+        double time = 0;
 
+        public void Update(double delta)
+        {
+            if (time < 1f)
+            {
+                time += delta;
+                return;
+            }
+            
+            time = 0;
+            InstatiateCustomer();
         }
 
         private void InstatiateCustomer()

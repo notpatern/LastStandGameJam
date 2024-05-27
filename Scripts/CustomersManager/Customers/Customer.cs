@@ -38,6 +38,5 @@ namespace Scripts.CustomerScripts
         {
             customerGFX.NextState();
         }
-        
     }
 }

@@ -16,10 +16,20 @@ namespace Scripts.CustomerScripts {
             update = DoWaitInLine;
         }
 
+        double time = 0;
+                    
         public override void _Process(double delta) {
             base._Process(delta);
 
             update.Invoke(delta);
+
+            time += delta;
+
+            if (time >= 5f)
+            {
+                GD.Print("caca");
+                QueueFree();
+            }            
         }
 
         public void NextState() {
@@ -35,10 +45,6 @@ namespace Scripts.CustomerScripts {
         }
 
         private void DoLeave(double delta) {
-
-        }
-
-        private new void Dispose() {
 
         }
     }

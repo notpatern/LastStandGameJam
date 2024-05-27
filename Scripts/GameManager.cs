@@ -18,7 +18,7 @@ namespace Scripts
 
         public override void _Process(double delta)
         {
-            _customerManager.Update();
+            _customerManager.Update(delta);
         }
     }
 }
