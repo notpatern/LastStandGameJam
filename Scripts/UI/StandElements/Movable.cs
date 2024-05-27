@@ -1,7 +1,8 @@
 using Godot;
 
 namespace Scripts.UI.StandElements {
-    public /*abstract*/ partial class Movable : Node2D {
+    [GlobalClass]
+    public abstract partial class Movable : Node2D {
         [Export] private MovableBody body;
         [Export] private Node2D gfxContainer;
 
@@ -10,15 +11,15 @@ namespace Scripts.UI.StandElements {
         private Vector2 mouseOffset;
 
         public delegate void State(double delta);
-        public State state;
+        public State stateMovable;
         
         public override void _Ready() {
             body.movableParent = this;
-            state = DroppedState;
+            stateMovable = DroppedState;
         }
 
         public override void _Process(double delta) {
-            state(delta);
+            stateMovable(delta);
         }
 
         public virtual void PickedUpState(double delta) {
@@ -31,12 +32,12 @@ namespace Scripts.UI.StandElements {
         }
 
         public virtual void SetPickedUp() {
-            state = PickedUpState;
+            stateMovable = PickedUpState;
             mouseOffset = Position - GetGlobalMousePosition();
         }
 
         public virtual void SetDropped() {
-            state = DroppedState;
+            stateMovable = DroppedState;
         }
 
         public void MoveUp(double delta) {

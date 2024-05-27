@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Scripts.UI.StandElements.Usable;
 
 namespace Scripts.UI.StandElements {
 	public partial class MovableBody : Area2D {
@@ -17,6 +18,18 @@ namespace Scripts.UI.StandElements {
                     movableParent.SetDropped();
                 }
             }
+            //if is iUsable
+            if (movableParent is iUsable) {
+                //right click pressed
+                if (@event is InputEventMouseButton && ((InputEventMouseButton)@event).ButtonIndex == MouseButton.Right && ((InputEventMouseButton)@event).Pressed) {
+                    ((iUsable)movableParent).StartUse();
+                }
+                //right click released
+                else if (@event is InputEventMouseButton && ((InputEventMouseButton)@event).ButtonIndex == MouseButton.Right && !((InputEventMouseButton)@event).Pressed) {
+                    ((iUsable)movableParent).StopUse();
+                }
+            }
+            
         }
     }
 }
