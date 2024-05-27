@@ -2,12 +2,11 @@ using Godot;
 using Scripts.RecipeScripts;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace Scripts.CustomerScripts
 {
     public partial class CustomersManager : Resource
     {
-        Node node;
+        Node2D customerSpawnPosition;
 
         [Export] CustomerScriptableObject[] customerScriptableObjects;
         List<Customer> liveCustomers = new List<Customer>();
@@ -15,12 +14,11 @@ namespace Scripts.CustomerScripts
 
         Godot.RandomNumberGenerator randomNumberGenerator = new Godot.RandomNumberGenerator();
 
-        public void Start(Node node)
+        public void Start(Node2D node)
         {
-            this.node = node;
+            this.customerSpawnPosition = node;
             randomNumberGenerator.Randomize();
             // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeConmpleted)));
-            InstatiateCustomer();
         }
 
         public void Update()
@@ -33,7 +31,7 @@ namespace Scripts.CustomerScripts
             int index = randomNumberGenerator.RandiRange(0, customerScriptableObjects.Length - 1);
 
             CustomerScriptableObject customer = customerScriptableObjects[index];
-            liveCustomers.Add(new Customer(customer.customerData, customer.gfx, node));
+            liveCustomers.Add(new Customer(customer.customerData, customer.gfx, customerSpawnPosition));
         }
 
         public void CheckIfRecipeConmpleted(Node2D node) {

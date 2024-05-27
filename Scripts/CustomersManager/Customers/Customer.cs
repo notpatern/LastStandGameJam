@@ -6,7 +6,7 @@ namespace Scripts.CustomerScripts
 {
     public class Customer {
 
-        Node node;
+        Node2D customerSpawnPosition;
 
         PackedScene gfx;
 
@@ -14,9 +14,9 @@ namespace Scripts.CustomerScripts
         CustomerGFX customerGFX;
         Area2D area2D;
 
-        public Customer(CustomerData customerData, PackedScene gfx, Node node)
+        public Customer(CustomerData customerData, PackedScene gfx, Node2D node)
         {
-            this.node = node;
+            this.customerSpawnPosition = node;
 
             this.customerData = customerData;
             this.gfx = gfx;
@@ -27,7 +27,7 @@ namespace Scripts.CustomerScripts
         public void Start()
         {
             customerGFX = gfx.Instantiate<CustomerGFX>();
-            node.AddChild(customerGFX);
+            customerSpawnPosition.AddChild(customerGFX);
             area2D = customerGFX.area;
             customerGFX.movementSpeed = customerData.moveSpeed;
 
