@@ -1,34 +1,58 @@
-[gd_scene load_steps=12 format=3 uid="uid://flkdl31858t1"]
+[gd_scene load_steps=15 format=3 uid="uid://flkdl31858t1"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_mywjn"]
 [ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerData.cs" id="2_bnky3"]
-[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/Customer.cs" id="2_c2luc"]
 [ext_resource type="PackedScene" uid="uid://bcjf5t287gs20" path="res://Scenes/TestCustomer.tscn" id="2_iofg5"]
 [ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="3_6xt1v"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObject.cs" id="4_mqeya"]
 
-[sub_resource type="Resource" id="Resource_a6mkc"]
+[sub_resource type="Resource" id="Resource_q4wpl"]
 script = ExtResource("2_bnky3")
+patience = 0.0
+money = 0.0
+moveSpeed = 7.0
 
-[sub_resource type="Resource" id="Resource_2ap0j"]
-script = ExtResource("2_c2luc")
-customerData = SubResource("Resource_a6mkc")
+[sub_resource type="Resource" id="Resource_vrw4c"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_q4wpl")
 gfx = ExtResource("2_iofg5")
 
-[sub_resource type="Resource" id="Resource_8pfig"]
-script = ExtResource("2_c2luc")
+[sub_resource type="Resource" id="Resource_5kvpj"]
+script = ExtResource("2_bnky3")
+patience = 0.0
+money = 0.0
+moveSpeed = 7.0
+
+[sub_resource type="Resource" id="Resource_cggj0"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_5kvpj")
 gfx = ExtResource("2_iofg5")
 
-[sub_resource type="Resource" id="Resource_51qsj"]
-script = ExtResource("2_c2luc")
+[sub_resource type="Resource" id="Resource_5u8hc"]
+script = ExtResource("2_bnky3")
+patience = 0.0
+money = 0.0
+moveSpeed = 7.0
+
+[sub_resource type="Resource" id="Resource_05lju"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_5u8hc")
 gfx = ExtResource("2_iofg5")
 
-[sub_resource type="Resource" id="Resource_5bx0k"]
-script = ExtResource("2_c2luc")
+[sub_resource type="Resource" id="Resource_8w8bo"]
+script = ExtResource("2_bnky3")
+patience = 0.0
+money = 0.0
+moveSpeed = 7.0
+
+[sub_resource type="Resource" id="Resource_h5ogq"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_8w8bo")
 gfx = ExtResource("2_iofg5")
 
 [sub_resource type="Resource" id="Resource_507wp"]
 script = ExtResource("3_6xt1v")
-customerScriptableObjects = Array[Object]([SubResource("Resource_2ap0j"), SubResource("Resource_8pfig"), SubResource("Resource_51qsj"), SubResource("Resource_5bx0k")])
+customerScriptableObjects = Array[Object]([SubResource("Resource_vrw4c"), SubResource("Resource_cggj0"), SubResource("Resource_05lju"), SubResource("Resource_h5ogq")])
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mywjn")

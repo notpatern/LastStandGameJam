@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcjf5t287gs20"]
+[gd_scene load_steps=4 format=3 uid="uid://bcjf5t287gs20"]
 
 [ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerGFX.cs" id="1_jwqw1"]
+[ext_resource type="Texture2D" uid="uid://dtqaxe361n45c" path="res://icon.svg" id="2_f6srh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0146j"]
+radius = 69.4622
 
 [node name="TestCustomer" type="Node2D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_jwqw1")
@@ -8,4 +12,9 @@ area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0146j")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_f6srh")

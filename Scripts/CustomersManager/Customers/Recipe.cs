@@ -2,7 +2,7 @@ using Godot;
 
 namespace Scripts.RecipeScripts
 {
-    public partial class Recipe : Node2D {
+    public partial class Recipe : Resource {
         // test
         public RecipeStruct content;
     }

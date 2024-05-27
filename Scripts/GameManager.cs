@@ -13,15 +13,12 @@ namespace Scripts
 
         public override void _Ready()
         {
-            _customerManager.Start();
-            _recipeManager.Start();
-            _zombsManager.Start();
+            _customerManager.Start(this);
         }
 
         public override void _Process(double delta)
         {
             _customerManager.Update();
-            _zombsManager.Update();
         }
     }
 }

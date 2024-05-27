@@ -2,46 +2,39 @@
 
 namespace Scripts.CustomerScripts {
     public partial class CustomerGFX : Node2D {
-        int index = 0;
-
-        delegate void UpdateDelegate();
+        delegate void UpdateDelegate(double delta);
         event UpdateDelegate update;
 
         [Export] public Area2D area;
+        public float movementSpeed;
+
+        bool _isColliding = false;
 
         public override void _Ready() {
             base._Ready();
 
-            update = DoCome;
+            update = DoWaitInLine;
         }
 
         public override void _Process(double delta) {
             base._Process(delta);
 
-            update.Invoke();
+            update.Invoke(delta);
         }
 
-        // this is so scuffed but hey it looks good in Customer.cs
         public void NextState() {
-            if (index == 0) {
-                index++;
-                update = DoIdle;
-            } 
-            else if (index == 1) {
-                index++;
-                update = DoLeave;
+            update = DoLeave;
+        }
+
+        private void DoWaitInLine(double delta) {
+
+            if (!area.HasOverlappingAreas())
+            {
+                Position += new Vector2(0, (float)(movementSpeed * delta));
             }
         }
 
-        private void DoCome() {
-
-        }
-
-        private void DoIdle() {
-
-        }
-
-        private void DoLeave() {
+        private void DoLeave(double delta) {
 
         }
 
