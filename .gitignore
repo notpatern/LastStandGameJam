@@ -21,3 +21,5 @@ mono_crash.*.json
 
 *.csproj
 *.sln
+
+naming_conventions.md
