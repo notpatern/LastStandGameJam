@@ -1,5 +1,5 @@
 using Godot;
-using Script.RecipeScripts;
+using Scripts.RecipeScripts;
 
 namespace Scripts.CustomerScripts
 {
@@ -10,4 +10,4 @@ namespace Scripts.CustomerScripts
         public float patience;
         public float money;
     }
-}s
+}
