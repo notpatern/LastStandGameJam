@@ -1,0 +1,80 @@
+[gd_scene load_steps=20 format=3 uid="uid://flkdl31858t1"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_mywjn"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerData.cs" id="2_bnky3"]
+[ext_resource type="PackedScene" uid="uid://bcjf5t287gs20" path="res://Scenes/Customers/TestCustomer.tscn" id="2_iofg5"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="3_6xt1v"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObject.cs" id="4_mqeya"]
+[ext_resource type="PackedScene" uid="uid://be3gpy4ohgfd5" path="res://Scenes/Customers/TestCustomer4.tscn" id="5_n8f1v"]
+[ext_resource type="PackedScene" uid="uid://cdtib0evnas3n" path="res://Scenes/Customers/TestCustomer2.tscn" id="6_7ujje"]
+[ext_resource type="PackedScene" uid="uid://wsre2ua1sxvc" path="res://Scenes/Customers/TestCustomer3.tscn" id="6_hcmrj"]
+
+[sub_resource type="Resource" id="Resource_q4wpl"]
+script = ExtResource("2_bnky3")
+patience = 10.0
+money = 0.0
+moveSpeed = 350.0
+
+[sub_resource type="Resource" id="Resource_vrw4c"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_q4wpl")
+gfx = ExtResource("2_iofg5")
+
+[sub_resource type="Resource" id="Resource_5kvpj"]
+script = ExtResource("2_bnky3")
+patience = 5.0
+money = 0.0
+moveSpeed = 350.0
+
+[sub_resource type="Resource" id="Resource_cggj0"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_5kvpj")
+gfx = ExtResource("5_n8f1v")
+
+[sub_resource type="Resource" id="Resource_5u8hc"]
+script = ExtResource("2_bnky3")
+patience = 7.0
+money = 0.0
+moveSpeed = 350.0
+
+[sub_resource type="Resource" id="Resource_05lju"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_5u8hc")
+gfx = ExtResource("6_hcmrj")
+
+[sub_resource type="Resource" id="Resource_8w8bo"]
+script = ExtResource("2_bnky3")
+patience = 9.0
+money = 0.0
+moveSpeed = 350.0
+
+[sub_resource type="Resource" id="Resource_h5ogq"]
+script = ExtResource("4_mqeya")
+customerData = SubResource("Resource_8w8bo")
+gfx = ExtResource("6_7ujje")
+
+[sub_resource type="Resource" id="Resource_507wp"]
+script = ExtResource("3_6xt1v")
+customerScriptableObjects = Array[Object]([SubResource("Resource_vrw4c"), SubResource("Resource_cggj0"), SubResource("Resource_05lju"), SubResource("Resource_h5ogq")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5fo"]
+size = Vector2(86, 76)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmnxt"]
+size = Vector2(85, 54)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mywjn")
+_customerManager = SubResource("Resource_507wp")
+
+[node name="CustomerSpawnPosition" type="Node2D" parent="."]
+position = Vector2(583, -45)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(582, 401)
+shape = SubResource("RectangleShape2D_nd5fo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+texture = SubResource("PlaceholderTexture2D_xmnxt")
