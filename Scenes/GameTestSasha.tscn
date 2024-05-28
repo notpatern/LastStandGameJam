@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_mywjn"]
 [ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerData.cs" id="2_bnky3"]
-[ext_resource type="PackedScene" uid="uid://bcjf5t287gs20" path="res://Scenes/TestCustomer.tscn" id="2_iofg5"]
+[ext_resource type="PackedScene" uid="uid://bcjf5t287gs20" path="res://Scenes/Customers/TestCustomer.tscn" id="2_iofg5"]
 [ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="3_6xt1v"]
 [ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObject.cs" id="4_mqeya"]
-[ext_resource type="PackedScene" uid="uid://be3gpy4ohgfd5" path="res://Scenes/TestCustomer4.tscn" id="5_n8f1v"]
-[ext_resource type="PackedScene" uid="uid://cdtib0evnas3n" path="res://Scenes/TestCustomer2.tscn" id="6_7ujje"]
-[ext_resource type="PackedScene" uid="uid://wsre2ua1sxvc" path="res://Scenes/TestCustomer3.tscn" id="6_hcmrj"]
+[ext_resource type="PackedScene" uid="uid://be3gpy4ohgfd5" path="res://Scenes/Customers/TestCustomer4.tscn" id="5_n8f1v"]
+[ext_resource type="PackedScene" uid="uid://cdtib0evnas3n" path="res://Scenes/Customers/TestCustomer2.tscn" id="6_7ujje"]
+[ext_resource type="PackedScene" uid="uid://wsre2ua1sxvc" path="res://Scenes/Customers/TestCustomer3.tscn" id="6_hcmrj"]
 
 [sub_resource type="Resource" id="Resource_q4wpl"]
 script = ExtResource("2_bnky3")
