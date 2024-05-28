@@ -7,16 +7,22 @@ namespace Scripts.ZombScripts
         [Export] public float speed;
         [Export] public float health;
         [Export] public float damage;
+        public Node2D target;
         public Texture2D zombTexture;
         public delegate void MettalicAI();
         MettalicAI state;
         Vector2 debugVector;
         Sprite2D zombSprite = new Sprite2D();
         [Export] CollisionShape2D collisionCircle;
+        public float radius;
+        [Export] public float repulsionForce = 2;
+        public Vector2 velocity;
+
+        public bool isAllowedToMove = true;
 
         public override void _Ready()
         {
-            GD.Print((collisionCircle.Shape as CircleShape2D).Radius);
+            radius = (collisionCircle.Shape as CircleShape2D).Radius;
             AddChild(zombSprite);
             zombSprite.Texture = zombTexture;
             debugVector = GetViewport().GetVisibleRect().Size;
@@ -30,20 +36,23 @@ namespace Scripts.ZombScripts
                 state = DoSeek;
             } else
             {
-                state = DoDestroy;
+                //state = DoDestroy;
             }
         }
 
         private void DoSeek()
         {
-            GlobalPosition += new Vector2(speed, 0);
-            GD.Print("weee");
-            GD.Print(GlobalPosition.DistanceSquaredTo(debugVector / 2));
+            if(!isAllowedToMove)
+            {
+                return;
+            }
+            velocity = new Vector2(speed, speed) * GlobalPosition.DirectionTo(target.GlobalPosition);
+            GlobalPosition += velocity;
         }
 
         private void DoDestroy()
         {
-            GD.Print("waaa");
+            
         }
 
         public override void _Process(double delta)

@@ -1,34 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://du6nnum4dwrgh"]
+[gd_scene load_steps=9 format=3 uid="uid://du6nnum4dwrgh"]
 
 [ext_resource type="Script" path="res://Scripts/ZombsManager/ZombsManager.cs" id="1_v1ko8"]
-[ext_resource type="Texture2D" uid="uid://dtqaxe361n45c" path="res://icon.svg" id="2_qcyaw"]
+[ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="2_qcyaw"]
+[ext_resource type="Texture2D" uid="uid://dnadw1tjdse7a" path="res://Assets/Textures/defaultZomb-svg (2).png" id="3_1np5n"]
 [ext_resource type="PackedScene" uid="uid://dqt3b6dvtf2ci" path="res://Scenes/Horde/Enemies/zomb.tscn" id="3_74v0q"]
+[ext_resource type="Texture2D" uid="uid://fxlki4m6q4vu" path="res://Assets/Textures/defaultZomb-svg.png" id="3_ni1gf"]
+[ext_resource type="Texture2D" uid="uid://bh5mvk4pg2ppo" path="res://Assets/Textures/defaultZomb-svg (1).png" id="4_507qr"]
+[ext_resource type="Script" path="res://Scenes/Horde/TargetDebug.cs" id="5_smpll"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njki1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qcyaw")
+"texture": ExtResource("3_1np5n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_qcyaw")
+"texture": ExtResource("4_507qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ni1gf")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="HiveMaster" type="Node2D" node_paths=PackedStringArray("zombsSprites")]
-position = Vector2(0, 302)
+[node name="Node2D" type="Node2D"]
+
+[node name="HiveMaster" type="Node2D" parent="." node_paths=PackedStringArray("zombsSprites", "zombsTarget")]
+position = Vector2(58, 52)
 script = ExtResource("1_v1ko8")
 zombsSprites = NodePath("AnimatedSprite2D")
 packedZomb = ExtResource("3_74v0q")
+zombsTarget = NodePath("../Icon")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HiveMaster"]
 position = Vector2(-1494, 0)
 sprite_frames = SubResource("SpriteFrames_njki1")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1.20327e-06, 0.665116, 0.290757, 1)
-position = Vector2(613, -5)
+position = Vector2(1078, 558)
 texture = ExtResource("2_qcyaw")
+script = ExtResource("5_smpll")
