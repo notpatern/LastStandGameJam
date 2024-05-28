@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 namespace Scripts.ZombScripts
 {
     [GlobalClass]
-    public partial class ZombsManager : Node2D
+    public partial class ZombsManager : Resource
     {
         int NumWave = 1;
         int WaveSize = 50;
         List<Zomb> zombs = new List<Zomb>();
-        [Export] AnimatedSprite2D zombsSprites;
-        [Export] PackedScene packedZomb;
-        [Export] Node2D zombsTarget;
-        float progressiveDifficulty;
+        [Export] PackedScene[] spawners;
 
-        public override void _Ready()
-        {
-            Start();
-        }
+
+        float progressiveDifficulty;
 
         public void Start()
         {
@@ -30,30 +25,13 @@ namespace Scripts.ZombScripts
         {
             for (int i = 0; i < WaveSize; i++)
             {
-                zombs.Add(CreateZomb(progressiveDifficulty,zombsSprites));
-                AddChild(zombs[i]);
+
             }
             return zombs;
         }
 
-        public Zomb CreateZomb(float pDifficulty, AnimatedSprite2D pZombSkins)    
-        {
-            Zomb currentZomb = (Zomb)packedZomb.Instantiate();
-            currentZomb.speed = currentZomb.speed * GetRandomSpeedFactor();
-            currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 0);
-            currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
-            currentZomb.target = zombsTarget;
-            currentZomb.Scale *= 0.5f;
 
-            return currentZomb;
-        }
 
-        private float GetRandomSpeedFactor()
-        {
-            RandomNumberGenerator randyRandom = new RandomNumberGenerator();
-            randyRandom.Randomize();
-            return randyRandom.RandfRange(1.2f,0.8f);
-        }
 
         public void Collision()
         {
@@ -105,28 +83,13 @@ namespace Scripts.ZombScripts
              * how many people were served correctly/incorrectly
              */
 
-            float lastWaveSinceHit, currentWaveNumber;
+            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist,playerEfficiency,playerSkill;
             
             currentWaveNumber = NumWave;
 
 
         }
-
-
-
-        private float DistToStand()
-        {
-            Vector2 spawnerPos = GlobalPosition;
-            Vector2 standPos = zombsTarget.GlobalPosition;
-
-            return spawnerPos.DistanceTo(standPos);
-        }
-
-        public override void _Process(double delta)
-        {
-            Update();
-        }
-        public void Update()
+        public void Update(double delta)
         {
             Collision();
         }
