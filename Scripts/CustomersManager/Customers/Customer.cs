@@ -1,6 +1,8 @@
 ﻿
 
 using Godot;
+using Scripts.RecipeScripts;
+using System.Linq;
 
 namespace Scripts.CustomerScripts
 {
@@ -26,6 +28,10 @@ namespace Scripts.CustomerScripts
             Start();
         }
 
+        public RecipeStruct GetRecipe() {
+            return customerData.recipe.content;
+        }
+
         public void Start()
         {
             customerGFX = gfx.Instantiate<CustomerGFX>();
@@ -34,7 +40,23 @@ namespace Scripts.CustomerScripts
             customerGFX.movementSpeed = customerData.moveSpeed;
             time = customerData.patience;
 
+            area2D.Connect("area_entered", new Callable(area2D, nameof(CheckIfRecipeCompleted)));
+
             GD.Print($"customer instantiated {customerGFX}");
+        }
+
+        private void CheckIfRecipeCompleted(Node2D node) {
+            Recipe recipe = (Recipe)node.GetScript();
+
+            if (recipe == null) {
+                return;
+            }
+
+            if (!recipe.content.Equals(this.GetRecipe())) {
+                return;
+            }
+
+            NextState();
         }
 
         public void Update(double delta) {

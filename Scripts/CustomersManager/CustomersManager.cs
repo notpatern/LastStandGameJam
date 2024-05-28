@@ -18,7 +18,7 @@ namespace Scripts.CustomerScripts
         {
             this.customerSpawnPosition = node;
             randomNumberGenerator.Randomize();
-            // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeConmpleted)));
+            // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeCompleted)));
         }
 
         double time = 0;
@@ -56,7 +56,7 @@ namespace Scripts.CustomerScripts
             }
         }
 
-        public void CheckIfRecipeConmpleted(Node2D node) {
+        public void CheckIfRecipeCompleted(Node2D node) {
 
             Recipe recipe = (Recipe)node.GetScript();
 
@@ -65,8 +65,7 @@ namespace Scripts.CustomerScripts
             }
 
             foreach (Customer customer in liveCustomers) {
-                // checks whether there are any elements in [customer.customerData.recipe.content] that are not in [recipe.content] and inverts the restult
-                if (!customer.customerData.recipe.content.condiments.Except(recipe.content.condiments).Any()) {
+                if (!customer.GetRecipe().Equals(recipe.content)) {
                     customer.NextState();
                     break;
                 }
