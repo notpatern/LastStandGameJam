@@ -15,8 +15,6 @@ namespace Scripts.UI.StandElements.Movables.Glasses {
                 //spawn the correct attack
             }
         }
-
-        
     }
 }
 
