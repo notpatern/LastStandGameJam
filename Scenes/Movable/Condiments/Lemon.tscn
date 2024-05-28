@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv5shbdp3vpel"]
+
+[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Condiments/Lemon.cs" id="1_0mr2f"]
+[ext_resource type="PackedScene" uid="uid://8lhaf5o8oqb4" path="res://Scenes/Movable/MovableBody.tscn" id="2_ysduj"]
+[ext_resource type="Texture2D" uid="uid://dtqaxe361n45c" path="res://icon.svg" id="3_6rxjs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn3r8"]
+size = Vector2(42, 44)
+
+[node name="Lemon" type="Node2D"]
+script = ExtResource("1_0mr2f")
+
+[node name="MovableBody" parent="." instance=ExtResource("2_ysduj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovableBody"]
+shape = SubResource("RectangleShape2D_sn3r8")
+
+[node name="GFXContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GFXContainer"]
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("3_6rxjs")
