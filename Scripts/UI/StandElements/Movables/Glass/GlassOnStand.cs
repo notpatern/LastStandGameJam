@@ -10,7 +10,7 @@ namespace Scripts.UI.StandElements.Movables.Glasses {
 
         }
 
-        public override void Drop() { 
+        public override void Drop() {
 
         }
     }

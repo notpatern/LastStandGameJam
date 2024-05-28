@@ -11,8 +11,12 @@ namespace Scripts.UI.StandElements.Movables.Glasses {
         }
 
         public override void Drop() {
-
+            if (HasUranium()) {
+                //spawn the correct attack
+            }
         }
+
+        
     }
 }
 
