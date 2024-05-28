@@ -12,8 +12,17 @@ script = ExtResource("1_nk0ug")
 area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 42.4242)
+scale = Vector2(0.559018, 0.559018)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0146j")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, -60.6061)
+scale = Vector2(0.346933, 0.346933)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_0146j")
 
 [node name="Icon" type="Sprite2D" parent="."]

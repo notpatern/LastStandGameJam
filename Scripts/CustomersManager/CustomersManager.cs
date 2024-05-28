@@ -25,6 +25,8 @@ namespace Scripts.CustomerScripts
 
         public void Update(double delta)
         {
+            UpdateCustomers(delta);
+
             if (time < 1f)
             {
                 time += delta;
@@ -41,6 +43,17 @@ namespace Scripts.CustomerScripts
 
             CustomerScriptableObject customer = customerScriptableObjects[index];
             liveCustomers.Add(new Customer(customer.customerData, customer.gfx, customerSpawnPosition));
+        }
+        
+        private void UpdateCustomers(double delta) {
+            if (liveCustomers.Count <= 0) {
+                return;
+            }
+
+            foreach (Customer customer in liveCustomers)
+            {
+                customer.Update(delta);
+            }
         }
 
         public void CheckIfRecipeConmpleted(Node2D node) {

@@ -11,9 +11,9 @@
 
 [sub_resource type="Resource" id="Resource_q4wpl"]
 script = ExtResource("2_bnky3")
-patience = 0.0
+patience = 10.0
 money = 0.0
-moveSpeed = 400.0
+moveSpeed = 350.0
 
 [sub_resource type="Resource" id="Resource_vrw4c"]
 script = ExtResource("4_mqeya")
@@ -22,9 +22,9 @@ gfx = ExtResource("2_iofg5")
 
 [sub_resource type="Resource" id="Resource_5kvpj"]
 script = ExtResource("2_bnky3")
-patience = 0.0
+patience = 5.0
 money = 0.0
-moveSpeed = 400.0
+moveSpeed = 350.0
 
 [sub_resource type="Resource" id="Resource_cggj0"]
 script = ExtResource("4_mqeya")
@@ -33,9 +33,9 @@ gfx = ExtResource("5_n8f1v")
 
 [sub_resource type="Resource" id="Resource_5u8hc"]
 script = ExtResource("2_bnky3")
-patience = 0.0
+patience = 7.0
 money = 0.0
-moveSpeed = 400.0
+moveSpeed = 350.0
 
 [sub_resource type="Resource" id="Resource_05lju"]
 script = ExtResource("4_mqeya")
@@ -44,9 +44,9 @@ gfx = ExtResource("6_hcmrj")
 
 [sub_resource type="Resource" id="Resource_8w8bo"]
 script = ExtResource("2_bnky3")
-patience = 0.0
+patience = 9.0
 money = 0.0
-moveSpeed = 400.0
+moveSpeed = 350.0
 
 [sub_resource type="Resource" id="Resource_h5ogq"]
 script = ExtResource("4_mqeya")
@@ -68,7 +68,7 @@ script = ExtResource("1_mywjn")
 _customerManager = SubResource("Resource_507wp")
 
 [node name="CustomerSpawnPosition" type="Node2D" parent="."]
-position = Vector2(583, -165)
+position = Vector2(583, -45)
 
 [node name="Area2D" type="Area2D" parent="."]
 
