@@ -51,7 +51,6 @@ public partial class ZombSpawner : Node2D
 
     public BigZomb CreateBigZomb(AnimatedSprite2D pZombSkins)
     {
-        
         BigZomb currentZomb = (BigZomb)packedBigZomb.Instantiate();
         currentZomb.speed = (currentZomb.speed/2) * GetRandomSpeedFactor();
         currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 1);

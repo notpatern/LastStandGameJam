@@ -1,4 +1,5 @@
 using Godot;
+using Scripts.UI.StandScripts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -121,7 +122,19 @@ namespace Scripts.ZombScripts
             }
         }
 
-        public void SetDifficulty()
+
+
+        private StandInfo stand;
+
+        public void GetStandInfo(StandInfo stand)
+        {
+            this.stand = stand;
+            SetDifficulty();
+        }
+
+        
+
+        public float SetDifficulty()
         {
             /* progressive difficulty params:
              * last wave since hit on stand
@@ -131,11 +144,20 @@ namespace Scripts.ZombScripts
              * how many people were served correctly/incorrectly
              */
 
-            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist, playerEfficiency, playerSkill;
-            
+            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist, specialZombsMaxDist, playerEfficiency, playerSkill, standHealth, standMaxHealth;
+
+            lastWaveSinceHit = stand.lastWaveSinceHitOnStand;
+            playerSkill = stand.playerZombKillEfficiency;
+            playerEfficiency = stand.playerBarmanEfficiency;
+            standHealth = stand.standHealth;
+            standMaxHealth = stand.standMaxHealth;
+
             currentWaveNumber = NumWave;
+            zombsMaxDist = 0; //to Change
+            specialZombsMaxDist = 0;//to change
+            progressiveDifficulty = ((currentWaveNumber + lastWaveSinceHit) * (Mathf.Abs(playerSkill - playerEfficiency) * (zombsMaxDist/specialZombsMaxDist))) - ( standMaxHealth - standHealth);
 
-
+            return progressiveDifficulty;
         }
         public void Update(double delta)
         {
