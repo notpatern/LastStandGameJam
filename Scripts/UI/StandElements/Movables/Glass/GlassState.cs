@@ -16,7 +16,7 @@ namespace Scripts.UI.StandElements.Movables.Glasses {
         public virtual void Drop() {
         }
         protected bool HasUranium() {
-            return _parentGlass.condiments.Contains(CondimentEnum.Uranium);
+            return _parentGlass.condiment == CondimentEnum.Uranium;
         }
     }
 }

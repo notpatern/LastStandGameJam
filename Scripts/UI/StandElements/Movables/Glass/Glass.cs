@@ -9,9 +9,9 @@ using System.Collections.Generic;
 namespace Scripts.UI.StandElements.Movables {
     public partial class Glass : Movable {
 
-        public float shakeValue;
+        public bool shook;
         public List<LiquidEnum> liquids;
-        public List<CondimentEnum> condiments;
+        public CondimentEnum condiment;
 
         /// <summary>
         /// State representing wether the glass is 'on' the stand (preparation of recipes)
@@ -25,11 +25,11 @@ namespace Scripts.UI.StandElements.Movables {
             GlassStateHandler();
         }
 
-        protected override void PickedUpState(double delta) {
+        public override void PickedUpState(double delta) {
             base.PickedUpState(delta);
         }
 
-        protected override void DroppedState(double delta) {
+        public override void DroppedState(double delta) {
             base.DroppedState(delta);
         }
 
@@ -63,7 +63,7 @@ namespace Scripts.UI.StandElements.Movables {
         }
 
         public RecipeStruct GetRecipeFromContents() {
-            return new RecipeStruct(shakeValue, liquids, condiments);
+            return new RecipeStruct(shook, liquids, condiment);
         }
     }
 }

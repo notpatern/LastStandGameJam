@@ -1,9 +1,15 @@
 
+using Scripts.ZombScripts;
+
 namespace Scripts.GlassAttacks.Effects {
 
-	public class GlassEffectSlow {
+	public class GlassEffectSlow : iGlassAttackEffect {
 
-		public void ApplyEffect() {
+		public GlassEffectSlow() {
+
+		}
+
+		public void ApplyEffect(Zomb zomb) {
 
 		}
 	}

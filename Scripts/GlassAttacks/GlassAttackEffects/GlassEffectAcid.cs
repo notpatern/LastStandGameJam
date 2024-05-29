@@ -1,9 +1,14 @@
+using Scripts.ZombScripts;
 
 namespace Scripts.GlassAttacks.Effects {
 
-    public class GlassEffectAcid {
+    public class GlassEffectAcid : iGlassAttackEffect {
 
-        public void ApplyEffect() {
+        public GlassEffectAcid() {
+
+        }
+
+        public void ApplyEffect(Zomb zomb) {
 
         }
     }
