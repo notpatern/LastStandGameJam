@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_gbmcg")
-patience = 15.0
+patience = 53.0
 money = 10.0
 moveSpeed = 340.0

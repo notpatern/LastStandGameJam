@@ -42,15 +42,18 @@ namespace Scripts.CustomerScripts
 
             if (time <= timer) {
                 time += delta;
+                GD.Print(time);
                 return;
             }
 
             time = 0;
             InstatiateCustomer();
+            RamdomizeSpawnerTime();
         }
 
         private void RamdomizeSpawnerTime() {
-            
+            float timeVatiance = randomNumberGenerator.RandfRange(-managerData.timeVariance, managerData.timeVariance);
+            timer = managerData.timeBetweenCustomers + timeVatiance;
         }
 
         private void InstatiateCustomer()

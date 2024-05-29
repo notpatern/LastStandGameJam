@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CustomerManagerData" load_steps=2 format=3 uid="uid://dq1y3wecre2nx"]
+
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerManagerData.cs" id="1_rypem"]
+
+[resource]
+script = ExtResource("1_rypem")
+timeBetweenCustomers = 13.0
+timeVariance = 4.0
+scalingMultiplier = 1.5
