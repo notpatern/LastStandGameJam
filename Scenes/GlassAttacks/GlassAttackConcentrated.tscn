@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfgq5b4wdn7x4"]
+
+[ext_resource type="Script" path="res://Scripts/GlassAttacks/GlassAttackConcentrated.cs" id="1_83pke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nly4f"]
+radius = 50.0
+
+[node name="GlassAttackConcentrated" type="Node2D" node_paths=PackedStringArray("gfx", "hitBox")]
+script = ExtResource("1_83pke")
+gfx = NodePath("GFX")
+hitBox = NodePath("HitBox")
+
+[node name="GFX" type="AnimatedSprite2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+scale = Vector2(1, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_nly4f")
