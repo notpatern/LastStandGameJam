@@ -13,13 +13,17 @@ namespace Scripts.ZombScripts
         List<Zomb> zombs = new List<Zomb>();
         [Export] PackedScene spawner;
         List<ZombSpawner> spawners = new List<ZombSpawner>();
-        
+        Node2D parentAnchorNode = new Node2D();
         float progressiveDifficulty;
+        public Node2D zombsTarget;
 
-        public void Start()
+        public void Start(Node2D parent, Node2D target)
         {
-            SpawnWave();
+            zombsTarget = target;
+            parent.AddChild(parentAnchorNode);
             AddSpawnPoint();
+            SpawnWave();
+
         }
 
         public List<Zomb> SpawnWave()
@@ -49,7 +53,9 @@ namespace Scripts.ZombScripts
         public List<ZombSpawner> AddSpawnPoint()
         {
             ZombSpawner newSpawner = spawner.Instantiate<ZombSpawner>();
+            newSpawner.zombsTarget = zombsTarget;
             spawners.Add(newSpawner);
+            parentAnchorNode.AddChild(newSpawner);
             return spawners;
         }
 

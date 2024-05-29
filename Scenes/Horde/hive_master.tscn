@@ -14,11 +14,12 @@ script = ExtResource("2_5rw5n")
 script = ExtResource("1_v1ko8")
 spawner = ExtResource("2_wb0qm")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("_ZombsTarget")]
 position = Vector2(0, 1)
 script = ExtResource("1_ug305")
 _recipeManager = SubResource("Resource_ca0ie")
 _zombsManager = SubResource("Resource_ni3hs")
+_ZombsTarget = NodePath("Icon")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1.20327e-06, 0.665116, 0.290757, 1)
