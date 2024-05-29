@@ -25,12 +25,12 @@ namespace Scripts.UI.StandElements {
             stateMovable(delta);
         }
 
-        protected virtual void PickedUpState(double delta) {
+        public virtual void PickedUpState(double delta) {
             Position = mouseOffset + GetGlobalMousePosition();
             MoveUp(delta);
         }
 
-        protected virtual void DroppedState(double delta) {
+        public virtual void DroppedState(double delta) {
             MoveDown(delta);
         }
 
