@@ -1,4 +1,3 @@
-using System;
 
 namespace Scripts.GlassAttacks.Effects {
 

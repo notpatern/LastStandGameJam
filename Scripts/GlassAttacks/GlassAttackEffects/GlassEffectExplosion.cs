@@ -1,9 +1,7 @@
-using Godot;
-using System;
 
 namespace Scripts.GlassAttacks.Effects {
 
-	public class GlassEffectSlow {
+	public class GlassEffectExplosion {
 
 		public void ApplyEffect() {
 
