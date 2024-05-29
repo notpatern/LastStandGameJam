@@ -1,9 +1,12 @@
 using Godot;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Scripts.UI.StandElements {
+
     [GlobalClass]
     public abstract partial class Movable : Node2D {
-        [Export] private MovableBody body;
+
+        [Export] public MovableBody body;
         [Export] private Node2D gfxContainer;
 
         [Export] private float maxGFXOffset = -15;
@@ -40,6 +43,7 @@ namespace Scripts.UI.StandElements {
             stateMovable = DroppedState;
         }
 
+        #region Visuals
         public void MoveUp(double delta) {
             //this is juiceable
             if (gfxContainer.Position.Y > maxGFXOffset) {
@@ -52,6 +56,7 @@ namespace Scripts.UI.StandElements {
                 gfxContainer.Position -= new Vector2(0, GFXOffsetSpeed) * (float)delta;
             }
         }
+        #endregion
     }
 }
 

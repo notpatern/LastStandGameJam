@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ngs0aycjiesu"]
 
-[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Glass.cs" id="1_myc1c"]
+[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Glass/Glass.cs" id="1_myc1c"]
 
 [node name="Glass" type="Node2D"]
 script = ExtResource("1_myc1c")
