@@ -23,14 +23,14 @@ namespace Scripts.ZombScripts
             parent.AddChild(parentAnchorNode);
             AddSpawnPoint();
             SpawnWave();
-
+            GetZombies();
         }
 
         public List<Zomb> SpawnWave()
         {
             for (int i = 0; i < spawners.Count; i++)
             {
-                spawners[i].spawns = SpawnOTron_3000();
+                spawners[i].spawnsList = SpawnOTron_3000();
                 spawners[i].StartWave();
             }
             return zombs;
@@ -100,6 +100,15 @@ namespace Scripts.ZombScripts
             Vector2 direction = zombPos.DirectionTo(otherZombPos);
             return direction;
         }
+        
+        public void GetZombies()
+        {
+            zombs.Clear();
+            for (int i = 0; i < spawners.Count; i++)
+            {
+                zombs.AddRange(spawners[i].GetSpawns());
+            }
+        }
 
         public void SetDifficulty()
         {
@@ -111,7 +120,7 @@ namespace Scripts.ZombScripts
              * how many people were served correctly/incorrectly
              */
 
-            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist,playerEfficiency,playerSkill;
+            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist, playerEfficiency, playerSkill;
             
             currentWaveNumber = NumWave;
 

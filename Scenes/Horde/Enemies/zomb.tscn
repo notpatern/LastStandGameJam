@@ -10,8 +10,10 @@ script = ExtResource("1_b4r5y")
 speed = 1.0
 health = 1.0
 damage = 1.0
-collisionCircle = NodePath("CollisionShape2D")
+collisionCircle = NodePath("Area2D/CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_20e0w")
 disabled = true

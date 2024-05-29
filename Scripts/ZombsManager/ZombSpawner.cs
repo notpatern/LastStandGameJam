@@ -13,7 +13,6 @@ public partial class ZombSpawner : Node2D
     [Export] PackedScene packedZomb;
     public override void _Ready()
     {
-
     }
 
     public void StartWave()
@@ -22,10 +21,14 @@ public partial class ZombSpawner : Node2D
         {
             if(zomb is DefaultZomb)
             {
-                AddChild(CreateDefaultZomb(zombsSprites));
+                DefaultZomb currentZomb = CreateDefaultZomb(zombsSprites);
+                spawns.Add(currentZomb);
+                AddChild(currentZomb);
             }
         }
     }
+
+    public List<Zomb> GetSpawns() { return spawns; }
 
     public DefaultZomb CreateDefaultZomb(AnimatedSprite2D pZombSkins)
     {
@@ -35,7 +38,6 @@ public partial class ZombSpawner : Node2D
         currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
         currentZomb.target = zombsTarget;
         currentZomb.Scale *= 0.5f;
-        GD.Print("Spawned a default zomb");
 
         return currentZomb;
     }
