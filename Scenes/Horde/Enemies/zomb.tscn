@@ -8,8 +8,8 @@ radius = 62.0081
 [node name="Zomb" type="Node2D" node_paths=PackedStringArray("collisionCircle")]
 script = ExtResource("1_dmaon")
 speed = 2.0
-repulsionForce = 1.0
 collisionCircle = NodePath("CollisionShape2D")
+repulsionForce = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_20e0w")

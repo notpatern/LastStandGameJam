@@ -11,7 +11,9 @@ namespace Scripts.ZombScripts
         int NumWave = 1;
         int WaveSize = 50;
         List<Zomb> zombs = new List<Zomb>();
-        [Export] PackedScene[] spawners;
+        [Export] PackedScene spawner;
+        List<ZombSpawner> spawers = new List<ZombSpawner>();
+
 
 
         float progressiveDifficulty;
@@ -27,7 +29,9 @@ namespace Scripts.ZombScripts
             {
 
             }
+            NumWave++;
             return zombs;
+
         }
 
 
