@@ -7,21 +7,18 @@ namespace Scripts
 {
     public partial class GameManager : Node2D
     {
-        [Export] CustomerManager _customerManager;
+        [Export] CustomersManager _customerManager;
         [Export] RecipeManager _recipeManager;
         [Export] ZombsManager _zombsManager;
 
         public override void _Ready()
         {
-            _customerManager.Start();
-            _recipeManager.Start();
-            _zombsManager.Start();
+            _customerManager.Start(GetNode<Node2D>("CustomerSpawnPosition"));
         }
 
         public override void _Process(double delta)
         {
-            _customerManager.Update();
-            _zombsManager.Update();
+            _customerManager.Update(delta);
         }
     }
 }
