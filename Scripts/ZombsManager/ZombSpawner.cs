@@ -6,6 +6,7 @@ using System.Collections.Generic;
 namespace Scripts.ZombScripts;
 public partial class ZombSpawner : Node2D
 {
+    public List<Zomb> spawnsList = new List<Zomb>();
     public List<Zomb> spawns = new List<Zomb>();
     [Export] AnimatedSprite2D zombsSprites;
     public Node2D zombsTarget;
@@ -17,7 +18,7 @@ public partial class ZombSpawner : Node2D
 
     public void StartWave()
     {
-        foreach (Zomb zomb in spawns)
+        foreach (Zomb zomb in spawnsList)
         {
             if(zomb is DefaultZomb)
             {
