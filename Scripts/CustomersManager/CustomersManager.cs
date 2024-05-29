@@ -1,9 +1,10 @@
 using Godot;
 using Scripts.RecipeScripts;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 namespace Scripts.CustomerScripts
 {
+    [GlobalClass]
     public partial class CustomersManager : Resource
     {
         Node2D customerSpawnPosition;
