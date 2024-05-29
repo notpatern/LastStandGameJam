@@ -13,12 +13,14 @@ namespace Scripts
 
         public override void _Ready()
         {
-            _customerManager.Start(GetNode<Node2D>("CustomerSpawnPosition"));
+            //_customerManager.Start(GetNode<Node2D>("CustomerSpawnPosition"));
+            _zombsManager.Start();
         }
 
         public override void _Process(double delta)
         {
-            _customerManager.Update(delta);
+            //_customerManager.Update(delta);
+
         }
     }
 }

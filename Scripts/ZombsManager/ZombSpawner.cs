@@ -1,10 +1,12 @@
 using Godot;
 using Scripts.ZombScripts;
 using System;
+using System.Collections.Generic;
 
 namespace Scripts.ZombScripts;
 public partial class ZombSpawner : Node2D
 {
+    public List<Zomb> spawns = new List<Zomb>();
     [Export] AnimatedSprite2D zombsSprites;
     [Export] Node2D zombsTarget;
     [Export] PackedScene packedZomb;
@@ -13,9 +15,20 @@ public partial class ZombSpawner : Node2D
 
     }
 
-    public Zomb CreateZomb(float pDifficulty, AnimatedSprite2D pZombSkins)
+    public void StartWave()
     {
-        Zomb currentZomb = (Zomb)packedZomb.Instantiate();
+        foreach (Zomb zomb in spawns)
+        {
+            if(zomb is DefaultZomb)
+            {
+                CreateDefaultZomb(zombsSprites);
+            }
+        }
+    }
+
+    public DefaultZomb CreateDefaultZomb(AnimatedSprite2D pZombSkins)
+    {
+        DefaultZomb currentZomb = (DefaultZomb)packedZomb.Instantiate();
         currentZomb.speed = currentZomb.speed * GetRandomSpeedFactor();
         currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 0);
         currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();

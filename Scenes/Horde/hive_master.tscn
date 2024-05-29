@@ -1,17 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://du6nnum4dwrgh"]
+[gd_scene load_steps=9 format=3 uid="uid://du6nnum4dwrgh"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ug305"]
 [ext_resource type="Script" path="res://Scripts/ZombsManager/ZombsManager.cs" id="1_v1ko8"]
+[ext_resource type="Script" path="res://Scripts/RecipeManager/RecipeManager.cs" id="2_5rw5n"]
 [ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="2_qcyaw"]
 [ext_resource type="PackedScene" uid="uid://df04q3u1dlvrg" path="res://Scenes/Horde/hive_Spawner.tscn" id="2_wb0qm"]
 [ext_resource type="Script" path="res://Scenes/Horde/TargetDebug.cs" id="5_smpll"]
 
+[sub_resource type="Resource" id="Resource_ca0ie"]
+script = ExtResource("2_5rw5n")
+
 [sub_resource type="Resource" id="Resource_ni3hs"]
 script = ExtResource("1_v1ko8")
-spawners = Array[PackedScene]([ExtResource("2_wb0qm")])
+spawner = ExtResource("2_wb0qm")
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_ug305")
+_recipeManager = SubResource("Resource_ca0ie")
 _zombsManager = SubResource("Resource_ni3hs")
 
 [node name="Icon" type="Sprite2D" parent="."]

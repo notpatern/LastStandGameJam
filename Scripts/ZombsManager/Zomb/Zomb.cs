@@ -10,10 +10,10 @@ namespace Scripts.ZombScripts
         public Node2D target;
         public Texture2D zombTexture;
         public delegate void MettalicAI();
-        MettalicAI state;
-        Vector2 debugVector;
-        Sprite2D zombSprite = new Sprite2D();
-        [Export] CollisionShape2D collisionCircle;
+        protected MettalicAI state;
+        protected Vector2 debugVector;
+        protected Sprite2D zombSprite = new Sprite2D();
+        [Export] protected CollisionShape2D collisionCircle;
         public float radius;
         [Export] public float repulsionForce = 2;
         public Vector2 velocity;
@@ -40,7 +40,7 @@ namespace Scripts.ZombScripts
             }
         }
 
-        private void DoSeek()
+        protected void DoSeek()
         {
             if(!isAllowedToMove)
             {
@@ -50,7 +50,7 @@ namespace Scripts.ZombScripts
             GlobalPosition += velocity;
         }
 
-        private void DoDestroy()
+        protected void DoDestroy()
         {
             
         }

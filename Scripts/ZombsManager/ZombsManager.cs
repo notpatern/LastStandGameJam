@@ -12,28 +12,46 @@ namespace Scripts.ZombScripts
         int WaveSize = 50;
         List<Zomb> zombs = new List<Zomb>();
         [Export] PackedScene spawner;
-        List<ZombSpawner> spawers = new List<ZombSpawner>();
-
-
-
+        List<ZombSpawner> spawners = new List<ZombSpawner>();
+        
         float progressiveDifficulty;
 
         public void Start()
         {
             SpawnWave();
+            AddSpawnPoint();
         }
 
         public List<Zomb> SpawnWave()
         {
-            for (int i = 0; i < WaveSize; i++)
+            for (int i = 0; i < spawners.Count; i++)
             {
-
+                spawners[i].spawns = SpawnOTron_3000();
+                spawners[i].StartWave();
             }
-            NumWave++;
             return zombs;
-
         }
 
+        public List<Zomb> SpawnOTron_3000()
+        {
+            List<Zomb> spawns = new List<Zomb>();
+            int spawnsPerSpawner = WaveSize/spawners.Count;
+
+            Parallel.For(0, spawnsPerSpawner, i =>
+            {
+                DefaultZomb zomb = new DefaultZomb();
+                spawns.Add(zomb);
+            });
+
+            return spawns; 
+        }
+
+        public List<ZombSpawner> AddSpawnPoint()
+        {
+            ZombSpawner newSpawner = spawner.Instantiate<ZombSpawner>();
+            spawners.Add(newSpawner);
+            return spawners;
+        }
 
 
 
