@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CustomersManager" load_steps=7 format=3 uid="uid://bfqq5t3smmain"]
+
+[ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="1_cut4i"]
+[ext_resource type="Resource" uid="uid://cu5t4jms337o7" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_1.tres" id="1_d16eg"]
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObject.cs" id="2_qresc"]
+[ext_resource type="Resource" uid="uid://7ll7pml2aro3" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_2.tres" id="2_yga4j"]
+
+[sub_resource type="Resource" id="Resource_nnbhu"]
+script = ExtResource("2_qresc")
+
+[sub_resource type="Resource" id="Resource_aoh2f"]
+script = ExtResource("2_qresc")
+
+[resource]
+script = ExtResource("1_cut4i")
+customerScriptableObjects = Array[Object]([ExtResource("1_d16eg"), ExtResource("2_yga4j"), SubResource("Resource_nnbhu"), SubResource("Resource_aoh2f")])

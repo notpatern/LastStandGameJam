@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CustomerData" load_steps=2 format=3 uid="uid://m2bfqn7op0nl"]
+
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerData.cs" id="1_gbmcg"]
+
+[resource]
+script = ExtResource("1_gbmcg")
+patience = 15.0
+money = 10.0
+moveSpeed = 340.0
