@@ -1,7 +1,8 @@
 using Godot;
 using Scripts.RecipeScripts;
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Scripts.CustomerScripts
 {
     [GlobalClass]
@@ -9,17 +10,24 @@ namespace Scripts.CustomerScripts
     {
         Node2D customerSpawnPosition;
 
+        [Export] CustomerManagerData managerData;
         [Export] CustomerScriptableObject[] customerScriptableObjects;
         List<Customer> liveCustomers = new List<Customer>();
         Area2D queueHitBox;
+
+        float timer;
 
         Godot.RandomNumberGenerator randomNumberGenerator = new Godot.RandomNumberGenerator();
 
         public void Start(Node2D node)
         {
+            timer = managerData.timeBetweenCustomers;
+            GD.Print(managerData.timeBetweenCustomers);
             this.customerSpawnPosition = node;
             randomNumberGenerator.Randomize();
             // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeCompleted)));
+
+            InstatiateCustomer();
         }
 
         double time = 0;
@@ -27,15 +35,22 @@ namespace Scripts.CustomerScripts
         public void Update(double delta)
         {
             UpdateCustomers(delta);
+            WaitForNextCustomer(delta);
+        }
 
-            if (time < 1f)
-            {
+        private void WaitForNextCustomer(double delta) {
+
+            if (time <= timer) {
                 time += delta;
                 return;
             }
-            
+
             time = 0;
             InstatiateCustomer();
+        }
+
+        private void RamdomizeSpawnerTime() {
+            
         }
 
         private void InstatiateCustomer()
