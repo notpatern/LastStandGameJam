@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqt3b6dvtf2ci"]
+[gd_scene load_steps=3 format=3 uid="uid://bd8b2rc4f3k5i"]
 
-[ext_resource type="Script" path="res://Scripts/ZombsManager/Zomb/DefaultZomb.cs" id="1_rit45"]
+[ext_resource type="Script" path="res://Scripts/ZombsManager/Zomb/BigZomb.cs" id="1_y7qpk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20e0w"]
 radius = 62.0081
 
 [node name="Zomb" type="Node2D" node_paths=PackedStringArray("collisionCircle")]
-script = ExtResource("1_rit45")
-speed = 2.0
+script = ExtResource("1_y7qpk")
+speed = 1.0
 health = 1.0
 damage = 1.0
 collisionCircle = NodePath("Area2D/CollisionShape2D")

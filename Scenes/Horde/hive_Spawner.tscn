@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://df04q3u1dlvrg"]
+[gd_scene load_steps=8 format=3 uid="uid://df04q3u1dlvrg"]
 
 [ext_resource type="Script" path="res://Scripts/ZombsManager/ZombSpawner.cs" id="1_ob2s8"]
 [ext_resource type="Texture2D" uid="uid://dnadw1tjdse7a" path="res://Assets/Textures/defaultZomb-svg (2).png" id="2_0qau8"]
-[ext_resource type="PackedScene" uid="uid://dqt3b6dvtf2ci" path="res://Scenes/Horde/Enemies/DefaultZomb.tscn" id="2_hjmvh"]
+[ext_resource type="PackedScene" uid="uid://dqt3b6dvtf2ci" path="res://Scenes/Horde/Enemies/DefaultZomb.tscn" id="2_ifuaw"]
 [ext_resource type="Texture2D" uid="uid://bh5mvk4pg2ppo" path="res://Assets/Textures/defaultZomb-svg (1).png" id="3_kwk06"]
+[ext_resource type="PackedScene" uid="uid://bd8b2rc4f3k5i" path="res://Scenes/Horde/Enemies/BigZomb.tscn" id="3_mpqb1"]
 [ext_resource type="Texture2D" uid="uid://fxlki4m6q4vu" path="res://Assets/Textures/defaultZomb-svg.png" id="4_3lrtr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njki1"]
@@ -27,7 +28,8 @@ animations = [{
 position = Vector2(58, 52)
 script = ExtResource("1_ob2s8")
 zombsSprites = NodePath("AnimatedSprite2D")
-packedZomb = ExtResource("2_hjmvh")
+packedDefaultZomb = ExtResource("2_ifuaw")
+packedBigZomb = ExtResource("3_mpqb1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1494, 0)

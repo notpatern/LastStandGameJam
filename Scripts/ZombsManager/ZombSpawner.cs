@@ -10,7 +10,9 @@ public partial class ZombSpawner : Node2D
     public List<Zomb> spawns = new List<Zomb>();
     [Export] AnimatedSprite2D zombsSprites;
     public Node2D zombsTarget;
-    [Export] PackedScene packedZomb;
+    [Export] PackedScene packedDefaultZomb;
+    [Export] PackedScene packedBigZomb;
+    [Export] PackedScene packedLeaperZomb;
     public override void _Ready()
     {
     }
@@ -24,6 +26,11 @@ public partial class ZombSpawner : Node2D
                 DefaultZomb currentZomb = CreateDefaultZomb(zombsSprites);
                 spawns.Add(currentZomb);
                 AddChild(currentZomb);
+            } else if(zomb is BigZomb)
+            {
+                BigZomb currentZomb = CreateBigZomb(zombsSprites);
+                spawns.Add(currentZomb);
+                AddChild(currentZomb);
             }
         }
     }
@@ -32,7 +39,7 @@ public partial class ZombSpawner : Node2D
 
     public DefaultZomb CreateDefaultZomb(AnimatedSprite2D pZombSkins)
     {
-        DefaultZomb currentZomb = (DefaultZomb)packedZomb.Instantiate();
+        DefaultZomb currentZomb = (DefaultZomb)packedDefaultZomb.Instantiate();
         currentZomb.speed = currentZomb.speed * GetRandomSpeedFactor();
         currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 0);
         currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
@@ -41,6 +48,20 @@ public partial class ZombSpawner : Node2D
 
         return currentZomb;
     }
+
+    public BigZomb CreateBigZomb(AnimatedSprite2D pZombSkins)
+    {
+        
+        BigZomb currentZomb = (BigZomb)packedBigZomb.Instantiate();
+        currentZomb.speed = (currentZomb.speed/2) * GetRandomSpeedFactor();
+        currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 1);
+        currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
+        currentZomb.target = zombsTarget;
+        currentZomb.Scale *= 1;
+
+        return currentZomb;
+    }
+
     private float GetRandomSpeedFactor()
     {
         RandomNumberGenerator randyRandom = new RandomNumberGenerator();

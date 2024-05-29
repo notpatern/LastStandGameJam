@@ -40,11 +40,22 @@ namespace Scripts.ZombScripts
         {
             List<Zomb> spawns = new List<Zomb>();
             int spawnsPerSpawner = WaveSize/spawners.Count;
-
+            int iteration = 0;
             Parallel.For(0, spawnsPerSpawner, i =>
             {
-                DefaultZomb zomb = new DefaultZomb();
-                spawns.Add(zomb);
+                if(iteration < 5)
+                {
+                    DefaultZomb zomb = new DefaultZomb();
+                    spawns.Add(zomb);
+                    iteration++;
+                }
+                else
+                {
+                    BigZomb bigZomb = new BigZomb();
+                    spawns.Add(bigZomb);
+                    iteration = 0;
+                }
+
             });
 
             return spawns; 
