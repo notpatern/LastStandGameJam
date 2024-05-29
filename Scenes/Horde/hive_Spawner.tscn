@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/ZombsManager/ZombSpawner.cs" id="1_ob2s8"]
 [ext_resource type="Texture2D" uid="uid://dnadw1tjdse7a" path="res://Assets/Textures/defaultZomb-svg (2).png" id="2_0qau8"]
-[ext_resource type="PackedScene" uid="uid://dqt3b6dvtf2ci" path="res://Scenes/Horde/Enemies/zomb.tscn" id="2_hjmvh"]
+[ext_resource type="PackedScene" uid="uid://dqt3b6dvtf2ci" path="res://Scenes/Horde/Enemies/DefaultZomb.tscn" id="2_hjmvh"]
 [ext_resource type="Texture2D" uid="uid://bh5mvk4pg2ppo" path="res://Assets/Textures/defaultZomb-svg (1).png" id="3_kwk06"]
 [ext_resource type="Texture2D" uid="uid://fxlki4m6q4vu" path="res://Assets/Textures/defaultZomb-svg.png" id="4_3lrtr"]
 
