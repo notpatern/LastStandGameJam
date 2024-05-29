@@ -9,6 +9,7 @@ namespace Scripts.UI.StandScripts {
         public float playerBarmanEfficiency;
         public int numCustomersServed;
         public int standHealth;
+        public int standMaxHealth;
         public int numAltDrinksPrepared;
 
         public StandInfo(int lastWaveSinceHitOnStand, float playerZombKillEfficiency, float playerBarmanEfficiency, int numCustomersServed, int standHealth, int numAltDrinksPrepared) {
