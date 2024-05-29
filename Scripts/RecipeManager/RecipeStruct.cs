@@ -6,21 +6,21 @@ using System.Linq;
 
 namespace Scripts.RecipeScripts {
     public struct RecipeStruct {
-        public float _shakeValue;
+        public bool _shook;
         public List<LiquidEnum> _liquids;
-        public List<CondimentEnum> _condiments;
+        public CondimentEnum _condiment;
 
-        public RecipeStruct(float shakeValue, List<LiquidEnum> liquids, List<CondimentEnum> condiment) {
-            _shakeValue = shakeValue;
+        public RecipeStruct(bool shook, List<LiquidEnum> liquids, CondimentEnum condiment) {
+            _shook = shook;
             _liquids = new List<LiquidEnum>(liquids);
-            _condiments = new List<CondimentEnum>(condiment);
+            _condiment = condiment;
         }
 
-        public bool Equals(RecipeStruct other, float difficultyMargin = 0) {
-            bool sameShakeValue = other._shakeValue < _shakeValue + difficultyMargin && other._shakeValue > _shakeValue - difficultyMargin;
+        public bool Equals(RecipeStruct other) {
+            bool sameShakeValue = _shook == other._shook ;
             bool sameLiquids = !_liquids.Except(other._liquids).Any();
-            bool sameCondiments = !_condiments.Except(other._condiments).Any();
-            return sameShakeValue && sameLiquids && sameCondiments;
+            bool sameCondiment = _condiment == other._condiment ;
+            return sameShakeValue && sameLiquids && sameCondiment;
         }
     }
 }

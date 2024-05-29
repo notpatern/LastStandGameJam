@@ -57,6 +57,7 @@ namespace Scripts.CustomerScripts
             }
 
             NextState();
+            // Give Money to Player
         }
 
         public void Update(double delta) {
