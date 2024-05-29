@@ -10,4 +10,4 @@ namespace Scripts.CustomerScripts
         public float patience;
         public float money;
     }
-}s
+}
