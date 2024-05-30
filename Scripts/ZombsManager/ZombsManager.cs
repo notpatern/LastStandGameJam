@@ -176,13 +176,13 @@ namespace Scripts.ZombScripts
 
             lastWaveSinceHit = stand.lastWaveSinceHitOnStand;
             playerSkill = stand.playerZombKillEfficiency;
-            playerEfficiency = stand.playerBarmanEfficiency;
+            playerEfficiency = stand.customerRatio;
             standHealth = stand.standHealth;
             standMaxHealth = stand.standMaxHealth;
             playerCurrency = CurrencyManager.playerMoney;
 
             currentWaveNumber = NumWave;
-            progressiveDifficulty = ((currentWaveNumber + lastWaveSinceHit)) * ((Mathf.Abs(playerSkill - playerEfficiency)) - playerCurrency / ( standMaxHealth - standHealth));
+            progressiveDifficulty = ((currentWaveNumber + lastWaveSinceHit)) * ((Mathf.Abs(playerSkill + playerEfficiency)) - playerCurrency / ( standMaxHealth - standHealth));
 
             return progressiveDifficulty;
         }
