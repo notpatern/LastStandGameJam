@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using System;
 
 namespace Scripts.UI.StandScripts {
@@ -8,15 +8,17 @@ namespace Scripts.UI.StandScripts {
         public float playerZombKillEfficiency;
         public float playerBarmanEfficiency;
         public int numCustomersServed;
+        public float customerRatio;
         public int standHealth;
         public int standMaxHealth;
         public int numAltDrinksPrepared;
 
-        public StandInfo(int lastWaveSinceHitOnStand, float playerZombKillEfficiency, float playerBarmanEfficiency, int numCustomersServed, int standHealth, int numAltDrinksPrepared, int standMaxHealth) {
+        public StandInfo(int lastWaveSinceHitOnStand, float playerZombKillEfficiency, float playerBarmanEfficiency, int numCustomersServed, float customerRatio, int standHealth, int standMaxHealth, int numAltDrinksPrepared) {
             this.lastWaveSinceHitOnStand = lastWaveSinceHitOnStand;
             this.playerZombKillEfficiency = playerZombKillEfficiency;
             this.playerBarmanEfficiency = playerBarmanEfficiency;
             this.numCustomersServed = numCustomersServed;
+            this.customerRatio = customerRatio;
             this.standHealth = standHealth;
             this.standMaxHealth = standMaxHealth;   
             this.numAltDrinksPrepared = numAltDrinksPrepared;
@@ -34,6 +36,7 @@ namespace Scripts.UI.StandScripts {
         private float playerZombKillEfficiency;
         private float playerBarmanEfficiency;
         private int numCustomersServed;
+        private float customerRatio;
         private int standHealth;
         private int standMaxHealth;
         private int numAltDrinksPrepared;
@@ -52,8 +55,13 @@ namespace Scripts.UI.StandScripts {
             GetStandInfo += action;
         }
 
+        public void GetCustomerInfo(float ratio) {
+            customerRatio = ratio;
+        }
+
+
         private StandInfo GetStandInfoStruct() {
-            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, standHealth, standMaxHealth, numAltDrinksPrepared);
+            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, customerRatio, standHealth, standMaxHealth, numAltDrinksPrepared);
         }
     }
 }
