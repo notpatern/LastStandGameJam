@@ -2,6 +2,8 @@
 
 using Godot;
 using Scripts.RecipeScripts;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace Scripts.CustomerScripts
 {
@@ -17,6 +19,8 @@ namespace Scripts.CustomerScripts
 
         double time;
 
+        Action customerServed;
+
         public Customer(CustomerData customerData, PackedScene gfx, Node2D node)
         {
             this.customerSpawnPosition = node;
@@ -25,6 +29,10 @@ namespace Scripts.CustomerScripts
             this.gfx = gfx;
 
             Start();
+        }
+
+        public void BindAction(Action action) {
+            customerServed = action;
         }
 
         public RecipeStruct GetRecipe() {
@@ -58,6 +66,7 @@ namespace Scripts.CustomerScripts
             }
 
             NextState();
+            customerServed.Invoke();
             CurrencyManager.playerGetMoney(customerData.money);
         }
 

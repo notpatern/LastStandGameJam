@@ -30,6 +30,7 @@ namespace Scripts
 
         private void BindAction()
         {
+            _customerManager.BindCustomerRatio(_stand.GetCustomerInfo);
             _stand.BindGetStandInfo(_zombsManager.GetStandInfo);
         }
     }

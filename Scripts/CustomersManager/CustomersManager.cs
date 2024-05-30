@@ -1,5 +1,6 @@
 using Godot;
 using Scripts.RecipeScripts;
+using System;
 using System.Collections.Generic;
 
 namespace Scripts.CustomerScripts
@@ -14,9 +15,14 @@ namespace Scripts.CustomerScripts
         List<Customer> liveCustomers = new List<Customer>();
         Area2D queueHitBox;
 
+        int totalCustomers = 0;
+        int customersServed = 0;
+
         float timer;
 
         Godot.RandomNumberGenerator randomNumberGenerator = new Godot.RandomNumberGenerator();
+
+        Action<float> getCustomerRatio;
 
         public void Start(Node2D node)
         {
@@ -27,6 +33,10 @@ namespace Scripts.CustomerScripts
             // queueHitBox.Connect("area_entered", new Callable(this, nameof(CheckIfRecipeCompleted)));
 
             InstatiateCustomer();
+        }
+
+        public void BindCustomerRatio(Action<float> action) {
+            getCustomerRatio = action;
         }
 
         double time = 0;
@@ -59,7 +69,10 @@ namespace Scripts.CustomerScripts
             int index = randomNumberGenerator.RandiRange(0, customerScriptableObjects.Length - 1);
 
             CustomerScriptableObject customer = customerScriptableObjects[index];
-            liveCustomers.Add(new Customer(customer.customerData, customer.gfx, customerSpawnPosition));
+            Customer customerInstance = new Customer(customer.customerData, customer.gfx, customerSpawnPosition);
+            customerInstance.BindAction(CustomerServed);
+            liveCustomers.Add(customerInstance);
+            totalCustomers++;
         }
         
         private void UpdateCustomers(double delta) {
@@ -83,10 +96,15 @@ namespace Scripts.CustomerScripts
 
             foreach (Customer customer in liveCustomers) {
                 if (!customer.GetRecipe().Equals(recipe.content)) {
-                    customer.NextState();
+                    customer.NextState(); 
                     break;
                 }
             }
+        }
+
+        private void CustomerServed() {
+            customersServed++;
+            getCustomerRatio(customersServed / totalCustomers);
         }
     }
 }
