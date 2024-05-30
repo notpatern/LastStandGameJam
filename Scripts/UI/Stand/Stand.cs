@@ -12,12 +12,13 @@ namespace Scripts.UI.StandScripts {
         public int standMaxHealth;
         public int numAltDrinksPrepared;
 
-        public StandInfo(int lastWaveSinceHitOnStand, float playerZombKillEfficiency, float playerBarmanEfficiency, int numCustomersServed, int standHealth, int numAltDrinksPrepared) {
+        public StandInfo(int lastWaveSinceHitOnStand, float playerZombKillEfficiency, float playerBarmanEfficiency, int numCustomersServed, int standHealth, int standMaxHealth, int numAltDrinksPrepared) {
             this.lastWaveSinceHitOnStand = lastWaveSinceHitOnStand;
             this.playerZombKillEfficiency = playerZombKillEfficiency;
             this.playerBarmanEfficiency = playerBarmanEfficiency;
             this.numCustomersServed = numCustomersServed;
             this.standHealth = standHealth;
+            this.standMaxHealth = standMaxHealth;
             this.numAltDrinksPrepared = numAltDrinksPrepared;
         }
     }
@@ -34,6 +35,7 @@ namespace Scripts.UI.StandScripts {
         private float playerBarmanEfficiency;
         private int numCustomersServed;
         private int standHealth;
+        private int standMaxHealth;
         private int numAltDrinksPrepared;
 
         private Action<StandInfo> GetStandInfo;
@@ -51,7 +53,7 @@ namespace Scripts.UI.StandScripts {
         }
 
         private StandInfo GetStandInfoStruct() {
-            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, standHealth, numAltDrinksPrepared);
+            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, standMaxHealth, standHealth, numAltDrinksPrepared);
         }
     }
 }

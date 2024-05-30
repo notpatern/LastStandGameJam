@@ -16,7 +16,7 @@ namespace Scripts.GlassAttacks {
         private iGlassAttackEffect effect;
 
         public override void _Ready() {
-            AddChild(timer);
+            // AddChild(timer);
             hitBox.Connect("area_entered", new Callable(this, nameof(OnHit)));
             SetEffect();
             gfx.Play();
