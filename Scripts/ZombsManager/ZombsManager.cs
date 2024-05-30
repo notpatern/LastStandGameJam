@@ -80,7 +80,7 @@ namespace Scripts.ZombScripts
                 foreach(Zomb otherZomb in zombs)
                 {
                     float distanceToNeighboringZomb = otherZomb.GlobalPosition.DistanceTo(zomb.GlobalPosition);
-                    if (distanceToNeighboringZomb < zomb.radius)
+                    if (distanceToNeighboringZomb < zomb.radius * zomb.Scale.X)
                     {
                         if(CompareDirection(zomb,otherZomb) > 0.8f)
                         {
@@ -159,9 +159,13 @@ namespace Scripts.ZombScripts
 
             return progressiveDifficulty;
         }
+
+
+
         public void Update(double delta)
         {
             Collision();
+            GetZombies();
         }
     }
 }

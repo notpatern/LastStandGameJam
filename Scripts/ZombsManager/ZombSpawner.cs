@@ -56,6 +56,7 @@ public partial class ZombSpawner : Node2D
         currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 1);
         currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
         currentZomb.target = zombsTarget;
+        currentZomb.repulsionForce = 0.5f;
         currentZomb.Scale *= 1;
 
         return currentZomb;

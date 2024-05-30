@@ -31,12 +31,12 @@ namespace Scripts.ZombScripts
 
         public void SwitchState()
         {
-            if (GlobalPosition.DistanceSquaredTo(debugVector/2) >= 1000)
+            if (GlobalPosition.DistanceTo(target.GlobalPosition) >= 10)
             {
                 state = DoSeek;
             } else
             {
-                //state = DoDestroy;
+                state = DoDestroy;
             }
         }
 
