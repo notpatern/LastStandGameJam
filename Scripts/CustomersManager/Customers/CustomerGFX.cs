@@ -8,7 +8,11 @@ namespace Scripts.CustomerScripts {
         delegate void FixedUpdateDelegate(double delta);
         event FixedUpdateDelegate fixedUpdate;
 
+        public int stateIndex = 0;
+
         [Export] public Area2D area;
+        [Export] public Node2D recipeUi;
+
         public float movementSpeed;
 
         bool _isColliding = false;
@@ -17,6 +21,7 @@ namespace Scripts.CustomerScripts {
 
         public override void _Ready() {
             base._Ready();
+
             int[] direction = {
                 -1,
                 1
@@ -25,8 +30,20 @@ namespace Scripts.CustomerScripts {
             randomDir = direction[_randomNumberGenerator.Randi() % direction.Length];
 
             _randomNumberGenerator.Randomize();
-            update = DoWaitInLine;
-            fixedUpdate = DoWaitInLineMovement;
+            update = DoCome;
+            fixedUpdate = DoComeMovement;
+        }
+
+        public void SetRecipeText(string text)
+        {
+            foreach (Node child in recipeUi.GetChildren())
+            {
+                if (child is RichTextLabel)
+                {
+                    RichTextLabel label = (RichTextLabel)child;
+                    label.Text = text;
+                }
+            }
         }
                     
         public override void _Process(double delta) {
@@ -42,12 +59,36 @@ namespace Scripts.CustomerScripts {
         }
 
         public void NextState() {
-            update = DoLeave;
-            fixedUpdate = DoLeaveMovement;
+            if (stateIndex == 0) {
+                stateIndex++;
+                update = DoWaitInLine;
+                fixedUpdate = DoWaitInLineMovement;
+            }
+            else if (stateIndex == 1) {
+                stateIndex++;
+                update = DoLeave;
+                fixedUpdate = DoLeaveMovement;
+                recipeUi.QueueFree();
+            }            
+        }
+
+        private void DoCome(double delta) {
+            recipeUi.Visible = false;
+        }
+
+        private void DoComeMovement(double delta) {
+            if (!area.HasOverlappingAreas()) {
+                Position += new Vector2(0, (float)(movementSpeed * delta));
+                return;
+            }
+
+            NextState();
         }
 
         private void DoWaitInLine(double delta) {
-
+            if (recipeUi.Visible == false) {
+                recipeUi.Visible = true;
+            }
         }
 
         private void DoWaitInLineMovement(double delta) {

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/CustomersManager/CustomersManager.cs" id="1_cut4i"]
 [ext_resource type="Resource" uid="uid://cu5t4jms337o7" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_1.tres" id="1_d16eg"]
-[ext_resource type="Resource" uid="uid://7ll7pml2aro3" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_2.tres" id="2_yga4j"]
-[ext_resource type="Resource" uid="uid://ekeq5ilead55" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_3.tres" id="3_7a62c"]
-[ext_resource type="Resource" uid="uid://byf8k6pu58tgl" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_4.tres" id="4_txv40"]
+[ext_resource type="Resource" uid="uid://7ll7pml2aro3" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_2.tres" id="2_i0upb"]
+[ext_resource type="Resource" uid="uid://ekeq5ilead55" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_3.tres" id="3_totqs"]
+[ext_resource type="Resource" uid="uid://byf8k6pu58tgl" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerScriptableObject_4.tres" id="4_643t7"]
 [ext_resource type="Resource" uid="uid://dq1y3wecre2nx" path="res://Scripts/CustomersManager/CustomerManagerData.tres" id="5_ayfwo"]
 
 [resource]
 script = ExtResource("1_cut4i")
 managerData = ExtResource("5_ayfwo")
-customerScriptableObjects = Array[Object]([ExtResource("1_d16eg"), ExtResource("2_yga4j"), ExtResource("3_7a62c"), ExtResource("4_txv40")])
+customerScriptableObjects = Array[Object]([ExtResource("1_d16eg"), ExtResource("2_i0upb"), ExtResource("3_totqs"), ExtResource("4_643t7")])
