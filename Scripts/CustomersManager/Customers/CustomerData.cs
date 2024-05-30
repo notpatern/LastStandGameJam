@@ -8,7 +8,7 @@ namespace Scripts.CustomerScripts
     {
         [Export] public Recipe recipe;
         [Export] public float patience;
-        [Export] public float money;
+        [Export] public int money;
         [Export] public float moveSpeed;
     }
 }

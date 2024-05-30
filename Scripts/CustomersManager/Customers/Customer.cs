@@ -58,7 +58,7 @@ namespace Scripts.CustomerScripts
             }
 
             NextState();
-            // Give Money to Player
+            CurrencyManager.playerGetMoney(customerData.money);
         }
 
         public void Update(double delta) {
