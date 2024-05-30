@@ -1,7 +1,6 @@
 using Godot;
 using Scripts.RecipeScripts;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Scripts.CustomerScripts
 {
@@ -42,7 +41,6 @@ namespace Scripts.CustomerScripts
 
             if (time <= timer) {
                 time += delta;
-                GD.Print(time);
                 return;
             }
 

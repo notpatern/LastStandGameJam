@@ -17,6 +17,7 @@ _customerManager = ExtResource("2_mf61u")
 position = Vector2(583, -45)
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 34)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(582, 401)

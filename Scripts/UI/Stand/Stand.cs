@@ -53,7 +53,7 @@ namespace Scripts.UI.StandScripts {
         }
 
         private StandInfo GetStandInfoStruct() {
-            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, standMaxHealth, standHealth, numAltDrinksPrepared);
+            return new StandInfo(lastWaveSinceHitOnStand, playerZombKillEfficiency, playerBarmanEfficiency, numCustomersServed, standHealth, standMaxHealth, numAltDrinksPrepared);
         }
     }
 }

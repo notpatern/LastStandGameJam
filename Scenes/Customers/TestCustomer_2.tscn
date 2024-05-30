@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddlb5p15m06a"]
+
+[ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerGFX.cs" id="1_bp2em"]
+[ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="2_fqkqp"]
+[ext_resource type="PackedScene" uid="uid://p264y8lsij2s" path="res://Scenes/Customers/RecipeUi.tscn" id="3_d5hf3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igocs"]
+radius = 97.3257
+
+[node name="TestCustomer" type="Node2D" node_paths=PackedStringArray("area", "recipeUi")]
+scale = Vector2(0.0819458, 0.0819458)
+script = ExtResource("1_bp2em")
+area = NodePath("Area2D")
+recipeUi = NodePath("RecipeUi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.412999, 0.620096, 0.966763, 1)
+position = Vector2(0, 12.1212)
+scale = Vector2(3.20317, 7.21476)
+texture = ExtResource("2_fqkqp")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 484.848)
+scale = Vector2(0.559018, 0.559018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_igocs")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, -683.379)
+scale = Vector2(0.346933, 0.346933)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_igocs")
+
+[node name="RecipeUi" parent="." instance=ExtResource("3_d5hf3")]
+position = Vector2(500.331, -427.112)
+scale = Vector2(7.38818, 7.38818)

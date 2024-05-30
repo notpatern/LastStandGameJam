@@ -16,14 +16,16 @@ namespace Scripts
         public override void _Ready()
         {
             _customerManager.Start(GetNode<Node2D>("CustomerSpawnPosition"));
-            _stand.Start();
-            _zombsManager.Start(this,_ZombsTarget);
+            // _stand.Start();
+            //_zombsManager.Start(this,_ZombsTarget);
+
+            BindAction();
         }
 
         public override void _Process(double delta)
         {
             _customerManager.Update(delta);
-            _zombsManager.Update(delta);
+            //_zombsManager.Update(delta);
         }
 
         private void BindAction()

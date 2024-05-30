@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CustomerScriptableObject" load_steps=4 format=3 uid="uid://byf8k6pu58tgl"]
 
 [ext_resource type="Script" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObject.cs" id="1_0knb2"]
-[ext_resource type="PackedScene" uid="uid://be3gpy4ohgfd5" path="res://Scenes/Customers/TestCustomer4.tscn" id="1_6j7tv"]
 [ext_resource type="Resource" uid="uid://m2bfqn7op0nl" path="res://Scripts/CustomersManager/Customers/CustomerScriptableObjects/CustomerData/CustomerData_4.tres" id="1_qrk7y"]
+[ext_resource type="PackedScene" uid="uid://chrc25xhqa0rb" path="res://Scenes/Customers/TestCustomer_4.tscn" id="2_uxah1"]
 
 [resource]
 script = ExtResource("1_0knb2")
 customerData = ExtResource("1_qrk7y")
-gfx = ExtResource("1_6j7tv")
+gfx = ExtResource("2_uxah1")
