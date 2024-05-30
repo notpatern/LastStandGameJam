@@ -12,7 +12,7 @@ public partial class ZombSpawner : Node2D
     public Node2D zombsTarget;
     [Export] PackedScene packedDefaultZomb;
     [Export] PackedScene packedBigZomb;
-    [Export] PackedScene packedLeaperZomb;
+    [Export] PackedScene packedZombling;
     public override void _Ready()
     {
     }
@@ -29,6 +29,11 @@ public partial class ZombSpawner : Node2D
             } else if(zomb is BigZomb)
             {
                 BigZomb currentZomb = CreateBigZomb(zombsSprites);
+                spawns.Add(currentZomb);
+                AddChild(currentZomb);
+            } else if (zomb is Zombling)
+            {
+                Zombling currentZomb = CreateZombling(zombsSprites);
                 spawns.Add(currentZomb);
                 AddChild(currentZomb);
             }
@@ -58,6 +63,19 @@ public partial class ZombSpawner : Node2D
         currentZomb.target = zombsTarget;
         currentZomb.repulsionForce = 0.5f;
         currentZomb.Scale *= 1;
+
+        return currentZomb;
+    }
+
+    public Zombling CreateZombling(AnimatedSprite2D pZombSkins)
+    {
+        Zombling currentZomb = (Zombling)packedZombling.Instantiate();
+        currentZomb.speed = currentZomb.speed * 2;
+        currentZomb.zombTexture = pZombSkins.SpriteFrames.GetFrameTexture(pZombSkins.Animation, 2);
+        currentZomb.GlobalPosition += ExtraMaths.GetRandomDirection();
+        currentZomb.target = zombsTarget;
+        currentZomb.repulsionForce = 0.5f;
+        currentZomb.Scale *= 0.25f;
 
         return currentZomb;
     }

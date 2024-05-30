@@ -11,6 +11,7 @@ namespace Scripts.ZombScripts
     {
         int NumWave = 1;
         int WaveSize = 50;
+        int killCount;
         List<Zomb> zombs = new List<Zomb>();
         [Export] PackedScene spawner;
         List<ZombSpawner> spawners = new List<ZombSpawner>();
@@ -20,6 +21,7 @@ namespace Scripts.ZombScripts
 
         public void Start(Node2D parent, Node2D target)
         {
+            progressiveDifficulty = 1000;
             zombsTarget = target;
             parent.AddChild(parentAnchorNode);
             AddSpawnPoint();
@@ -29,35 +31,58 @@ namespace Scripts.ZombScripts
 
         public List<Zomb> SpawnWave()
         {
+            GD.Print(progressiveDifficulty);
+            killCount = 0;
             for (int i = 0; i < spawners.Count; i++)
             {
                 spawners[i].spawnsList = SpawnOTron_3000();
                 spawners[i].StartWave();
             }
+
+            NumWave++;
             return zombs;
         }
 
         public List<Zomb> SpawnOTron_3000()
         {
             List<Zomb> spawns = new List<Zomb>();
-            int spawnsPerSpawner = WaveSize/spawners.Count;
+            int spawnsPerSpawner = (int)progressiveDifficulty/spawners.Count;
             int iteration = 0;
-            Parallel.For(0, spawnsPerSpawner, i =>
+            for(int i = 0;i < spawnsPerSpawner;i++)
             {
-                if(iteration < 5)
+                if (progressiveDifficulty > 0)
                 {
-                    DefaultZomb zomb = new DefaultZomb();
-                    spawns.Add(zomb);
-                    iteration++;
-                }
-                else
-                {
-                    BigZomb bigZomb = new BigZomb();
-                    spawns.Add(bigZomb);
-                    iteration = 0;
-                }
+                    GD.Print(progressiveDifficulty);
+                    if (iteration < 5)
+                    {
+                        DefaultZomb zomb = new DefaultZomb();
+                        spawns.Add(zomb);
+                        iteration++;
+                        progressiveDifficulty -= 3;
+                    }
+                    else if (progressiveDifficulty > 40)
+                    {
+                        BigZomb bigZomb = new BigZomb();
+                        spawns.Add(bigZomb);
+                        iteration = 0;
+                        progressiveDifficulty -= 10;
+                    }
+                    else if (progressiveDifficulty > 20 && iteration > 1)
+                    {
+                        Zombling zombling = new Zombling();
+                        for (int j = 0; j < 10; j++)
+                        {
+                            spawns.Add(zombling);
+                        }
 
-            });
+                        progressiveDifficulty -= 20;
+                    }
+                    else
+                    {
+                        iteration = 0;
+                    }
+                }
+            };
 
             return spawns; 
         }
@@ -88,7 +113,7 @@ namespace Scripts.ZombScripts
                             continue;
                         }
                         otherZomb.isAllowedToMove = true;
-                        zomb.GlobalPosition += CalculateForce(zomb.repulsionForce,distanceToNeighboringZomb,zomb.radius) * GetDirectionToOtherZomb(zomb.GlobalPosition, otherZomb.GlobalPosition) * -1;
+                        zomb.GlobalPosition += CalculateForce(otherZomb.repulsionForce,distanceToNeighboringZomb,zomb.radius) * GetDirectionToOtherZomb(zomb.GlobalPosition, otherZomb.GlobalPosition) * -1;
                     }
                 }
             }
@@ -115,11 +140,14 @@ namespace Scripts.ZombScripts
         
         public void GetZombies()
         {
+            int currentZombNum = zombs.Count;
             zombs.Clear();
             for (int i = 0; i < spawners.Count; i++)
             {
                 zombs.AddRange(spawners[i].GetSpawns());
             }
+
+            killCount += currentZombNum - zombs.Count;
         }
 
 
@@ -144,18 +172,17 @@ namespace Scripts.ZombScripts
              * how many people were served correctly/incorrectly
              */
 
-            float lastWaveSinceHit, currentWaveNumber, zombsMaxDist, specialZombsMaxDist, playerEfficiency, playerSkill, standHealth, standMaxHealth;
+            float lastWaveSinceHit, currentWaveNumber, playerEfficiency, playerSkill, standHealth, standMaxHealth, playerCurrency;
 
             lastWaveSinceHit = stand.lastWaveSinceHitOnStand;
             playerSkill = stand.playerZombKillEfficiency;
             playerEfficiency = stand.playerBarmanEfficiency;
             standHealth = stand.standHealth;
             standMaxHealth = stand.standMaxHealth;
+            playerCurrency = CurrencyManager.playerMoney;
 
             currentWaveNumber = NumWave;
-            zombsMaxDist = 0; //to Change
-            specialZombsMaxDist = 0;//to change
-            progressiveDifficulty = ((currentWaveNumber + lastWaveSinceHit) * (Mathf.Abs(playerSkill - playerEfficiency) * (zombsMaxDist/specialZombsMaxDist))) - ( standMaxHealth - standHealth);
+            progressiveDifficulty = ((currentWaveNumber + lastWaveSinceHit)) * ((Mathf.Abs(playerSkill - playerEfficiency)) - playerCurrency / ( standMaxHealth - standHealth));
 
             return progressiveDifficulty;
         }
