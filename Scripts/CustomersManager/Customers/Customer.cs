@@ -42,6 +42,8 @@ namespace Scripts.CustomerScripts
             area2D.Connect("area_entered", new Callable(area2D, nameof(CheckIfRecipeCompleted)));
 
             GD.Print($"customer instantiated {customerGFX}");
+
+            customerGFX.SetRecipeText("Alcohol\r\nCondiment\r\nSoft");
         }
 
         private void CheckIfRecipeCompleted(Node2D node) {
@@ -60,12 +62,12 @@ namespace Scripts.CustomerScripts
         }
 
         public void Update(double delta) {
-            if (time >= 0) {
+            if (time >= 0 && customerGFX.stateIndex > 0) {
                 time -= delta;
-                return;
             }
-
-            NextState();
+            else if (time < 0 && customerGFX.stateIndex > 0) {
+                NextState();
+            }
         }
 
         public void NextState()
