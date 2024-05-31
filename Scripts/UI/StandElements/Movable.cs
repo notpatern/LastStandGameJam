@@ -13,16 +13,24 @@ namespace Scripts.UI.StandElements {
         [Export] private float GFXOffsetSpeed = -500;
         private Vector2 mouseOffset;
 
+        protected Vector2 screenSize;
+
         public delegate void State(double delta);
         public State stateMovable;
         
         public override void _Ready() {
             body.movableParent = this;
             stateMovable = DroppedState;
+            screenSize = GetViewport().GetVisibleRect().Size;
         }
 
         public override void _Process(double delta) {
             stateMovable(delta);
+            StayWithinScreen();
+        }
+
+        private void StayWithinScreen() {
+            Position = new Vector2(Mathf.Clamp(Position.X, 0, screenSize.X), Mathf.Clamp(Position.Y, 0, screenSize.Y));
         }
 
         public virtual void PickedUpState(double delta) {
