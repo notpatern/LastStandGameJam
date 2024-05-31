@@ -10,9 +10,13 @@ namespace Scripts.UI.StandElements.Movables {
     public partial class Glass : Movable {
 
         public bool shook;
-        public List<LiquidEnum> liquids;
+        //public List<LiquidEnum> liquids;
         public CondimentEnum condiment;
 
+        //amount of each liquid in the bottle.
+        private float alcoholValue = 0;
+        private float lemonadeValue = 0;
+        private const float MAX_LIQUID = 100;
         /// <summary>
         /// State representing wether the glass is 'on' the stand (preparation of recipes)
         /// or 'off' the stand (give glass to customer or drop on zombs).
@@ -23,6 +27,22 @@ namespace Scripts.UI.StandElements.Movables {
         public override void _Process(double delta) {
             base._Process(delta);
             GlassStateHandler();
+        }
+
+        public void AddAlcohol(float flowSpeed, float delta) {
+            //c'est pas swag mais pour debug plus tard c'est plus lisible que les autres solutions.
+            if (alcoholValue + lemonadeValue < MAX_LIQUID) {
+                alcoholValue += flowSpeed * delta;
+                alcoholValue = Mathf.Clamp(alcoholValue, 0, MAX_LIQUID);
+            }
+        }
+
+        public void AddLemonade(float flowSpeed, float delta) {
+            //c'est pas swag mais pour debug plus tard c'est plus lisible que les autres solutions.
+            if (alcoholValue + lemonadeValue < MAX_LIQUID) {
+                lemonadeValue += flowSpeed * delta;
+                lemonadeValue = Mathf.Clamp(lemonadeValue, 0, MAX_LIQUID);
+            }
         }
 
         public override void PickedUpState(double delta) {
