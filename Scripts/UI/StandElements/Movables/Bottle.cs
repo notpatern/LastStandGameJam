@@ -5,9 +5,9 @@ using Scripts.UI.StandElements.Helper;
 namespace Scripts.UI.StandElements.Movables {
     public partial class Bottle : Movable, iLiquidDispenser {
 
+        [Export] LiquidEnum liquid = LiquidEnum.Lemonade;
         [Export] Area2D pourArea;
         LiquidDispenser dispenser;
-        LiquidEnum liquid = LiquidEnum.Lemonade;
 
         public override void _Ready() {
             base._Ready();
