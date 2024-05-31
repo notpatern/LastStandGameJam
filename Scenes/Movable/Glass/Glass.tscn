@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://ngs0aycjiesu"]
+[gd_scene load_steps=5 format=3 uid="uid://ngs0aycjiesu"]
 
 [ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Glass/Glass.cs" id="1_myc1c"]
+[ext_resource type="PackedScene" uid="uid://8lhaf5o8oqb4" path="res://Scenes/Movable/MovableBody.tscn" id="2_lhfde"]
+[ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="3_pvcu5"]
 
-[node name="Glass" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k6b4"]
+size = Vector2(42, 44)
+
+[node name="Glass" type="Node2D" node_paths=PackedStringArray("body", "gfxContainer")]
 script = ExtResource("1_myc1c")
+body = NodePath("MovableBody")
+gfxContainer = NodePath("GFXContainer")
+
+[node name="MovableBody" parent="." instance=ExtResource("2_lhfde")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovableBody"]
+shape = SubResource("RectangleShape2D_2k6b4")
+
+[node name="GFXContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GFXContainer"]
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("3_pvcu5")
