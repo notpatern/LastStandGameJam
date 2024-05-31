@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkpmrrsiv80sh"]
 
-[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movable.cs" id="1_pbh56"]
+[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Condiments/GrapeFruit.cs" id="1_o3kbs"]
 [ext_resource type="PackedScene" uid="uid://8lhaf5o8oqb4" path="res://Scenes/Movable/MovableBody.tscn" id="2_gp4x8"]
-[ext_resource type="Texture2D" uid="uid://dtqaxe361n45c" path="res://icon.svg" id="3_jk5se"]
+[ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="3_jk5se"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4l5b"]
 size = Vector2(42, 44)
 
 [node name="MovableTemplate" type="Node2D" node_paths=PackedStringArray("body", "gfxContainer")]
-script = ExtResource("1_pbh56")
+script = ExtResource("1_o3kbs")
 body = NodePath("MovableBody")
 gfxContainer = NodePath("GFXContainer")
 

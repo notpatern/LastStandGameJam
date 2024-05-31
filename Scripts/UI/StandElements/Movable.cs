@@ -14,6 +14,7 @@ namespace Scripts.UI.StandElements {
         private Vector2 mouseOffset;
 
         protected Vector2 screenSize;
+        protected Vector2 spriteSize = Vector2.Zero;
 
         public delegate void State(double delta);
         public State stateMovable;
@@ -26,11 +27,11 @@ namespace Scripts.UI.StandElements {
 
         public override void _Process(double delta) {
             stateMovable(delta);
-            StayWithinScreen();
+            StayWithinScreen(spriteSize);
         }
 
-        private void StayWithinScreen() {
-            Position = new Vector2(Mathf.Clamp(Position.X, 0, screenSize.X), Mathf.Clamp(Position.Y, 0, screenSize.Y));
+        private void StayWithinScreen(Vector2 spriteSize) {
+            Position = new Vector2(Mathf.Clamp(Position.X, spriteSize.X, screenSize.X - spriteSize.X), Mathf.Clamp(Position.Y, spriteSize.Y, screenSize.Y - spriteSize.Y));
         }
 
         public virtual void PickedUpState(double delta) {
