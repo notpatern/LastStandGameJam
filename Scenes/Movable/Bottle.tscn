@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6lsy2gg0ccua"]
+
+[ext_resource type="Script" path="res://Scripts/UI/StandElements/Movables/Bottle.cs" id="1_1jm4g"]
+[ext_resource type="PackedScene" uid="uid://8lhaf5o8oqb4" path="res://Scenes/Movable/MovableBody.tscn" id="2_w1glk"]
+[ext_resource type="Texture2D" uid="uid://ci1ty71q04jfi" path="res://icon.svg" id="3_y7mey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60u2i"]
+size = Vector2(42, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ssrh"]
+radius = 53.0094
+
+[node name="Bottle" type="Node2D" node_paths=PackedStringArray("pourArea", "body", "gfxContainer")]
+script = ExtResource("1_1jm4g")
+pourArea = NodePath("PourArea")
+body = NodePath("MovableBody")
+gfxContainer = NodePath("GFXContainer")
+
+[node name="MovableBody" parent="." instance=ExtResource("2_w1glk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovableBody"]
+shape = SubResource("RectangleShape2D_60u2i")
+
+[node name="GFXContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GFXContainer"]
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("3_y7mey")
+
+[node name="PourArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourArea"]
+position = Vector2(66, 55)
+shape = SubResource("CircleShape2D_6ssrh")

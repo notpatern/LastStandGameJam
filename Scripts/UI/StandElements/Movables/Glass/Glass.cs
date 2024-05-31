@@ -29,19 +29,21 @@ namespace Scripts.UI.StandElements.Movables {
             GlassStateHandler();
         }
 
-        public void AddAlcohol(float flowSpeed, float delta) {
+        public void AddLiquid(LiquidEnum liquid, float flowSpeed) {
             //c'est pas swag mais pour debug plus tard c'est plus lisible que les autres solutions.
-            if (alcoholValue + lemonadeValue < MAX_LIQUID) {
-                alcoholValue += flowSpeed * delta;
-                alcoholValue = Mathf.Clamp(alcoholValue, 0, MAX_LIQUID);
-            }
-        }
-
-        public void AddLemonade(float flowSpeed, float delta) {
-            //c'est pas swag mais pour debug plus tard c'est plus lisible que les autres solutions.
-            if (alcoholValue + lemonadeValue < MAX_LIQUID) {
-                lemonadeValue += flowSpeed * delta;
-                lemonadeValue = Mathf.Clamp(lemonadeValue, 0, MAX_LIQUID);
+            switch (liquid) {
+                case LiquidEnum.Lemonade:
+                    if (alcoholValue + lemonadeValue < MAX_LIQUID) {
+                        lemonadeValue += flowSpeed * (float)GetProcessDeltaTime();
+                        lemonadeValue = Mathf.Clamp(lemonadeValue, 0, MAX_LIQUID);
+                    }
+                    break;
+                case LiquidEnum.Alcohol:
+                    if (alcoholValue + lemonadeValue < MAX_LIQUID) {
+                        alcoholValue += flowSpeed * (float)GetProcessDeltaTime();
+                        alcoholValue = Mathf.Clamp(alcoholValue, 0, MAX_LIQUID);
+                    }
+                    break;
             }
         }
 
@@ -83,7 +85,7 @@ namespace Scripts.UI.StandElements.Movables {
         }
 
         public RecipeStruct GetRecipeFromContents() {
-            return new RecipeStruct(shook, liquids, condiment);
+            return new RecipeStruct(shook, alcoholValue, lemonadeValue, condiment);
         }
     }
 }
